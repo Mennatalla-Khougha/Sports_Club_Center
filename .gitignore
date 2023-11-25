@@ -1,4 +1,4 @@
 .vscode/
 __pycache__/
-git_update.sh
+git_update*
 file.json 
