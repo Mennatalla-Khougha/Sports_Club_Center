@@ -1,0 +1,58 @@
+header {
+  height: 110px;
+  width: 100%;
+  background-color: #171e26;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+header img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 4px white solid;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+header h1 {
+  display: inline-block;
+  font-size: 40px;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  color: azure;
+  margin: 0;
+}
+
+.options {
+  height: 50px;
+  position: fixed;
+  display: flex;
+  left: 200px;
+  top: 60px;
+  align-items: center;
+}
+
+.options div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 2px white solid;
+  padding: 0 20px;
+  margin: 0;
+}
+
+header h3 {
+  color: azure;
+  font-size: 24px;
+}
+header h3,
+header ul {
+  margin: 0;
+}
