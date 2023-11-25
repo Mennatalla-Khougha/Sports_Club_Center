@@ -8,7 +8,11 @@ body {
   min-height: 100vh;
 }
 
+
 .container {
-  max-width: 1000px;
-  margin: 30px auto 70px auto;
+  max-width: 100%;
+  margin: 150px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
