@@ -33,8 +33,15 @@
     height: 300px;
 }
 
-.events {
+.info_event {
     width: 100%;
-    text-align: center;
     min-width: 350px;
+    display: flex;
+    gap: 10px;
+    margin: 10px 50px;
+}
+
+.info_event img {
+    width: 300px;
+    height: 300px;
 }
