@@ -18,7 +18,7 @@ class TestConsole_prompt(unittest.TestCase):
     def test_empty_line(self):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertFalse(ConsoleCommand().onecmd(""))
-            self.assertEqual("", output.getvalue().strip())    
+            self.assertEqual("", output.getvalue().strip())
 
 
 class TestConsole_quit(unittest.TestCase):
@@ -35,4 +35,3 @@ class TestConsole_quit(unittest.TestCase):
 
 class TestConsole_player(unittest.TestCase):
     """Unittest for creating from the prompt"""
-    

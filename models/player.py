@@ -8,6 +8,7 @@ from sqlalchemy import Column, String, CHAR, Float, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
+
 class Player(BaseModel, Base):
     """Representation of player"""
     __tablename__ = 'players'
@@ -40,4 +41,5 @@ class Player(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     def records(self, tournament):
-        return [record for record in tournament.records if record.player_id == self.id]
+        return [record for record in tournament.records
+                if record.player_id == self.id]

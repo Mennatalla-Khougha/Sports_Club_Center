@@ -1,0 +1,3 @@
+USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db ./file.py
+
+MYSQL_ENV=test USER_MYSQL=club_test PWD_MYSQL=club_test_pwd HOST_MYSQL=localhost DB_MYSQL=club_test_db python3 -m unittest discover tests

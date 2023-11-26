@@ -9,6 +9,7 @@ from models.association import players_tournaments
 from models.record import Record
 from datetime import datetime
 
+
 class Tournament(BaseModel, Base):
     """Representation of Tournamet"""
     __tablename__ = 'tournaments'
@@ -20,7 +21,8 @@ class Tournament(BaseModel, Base):
     win_value = Column(Integer, default=0)
     draw_value = Column(Integer, default=0)
     loss_value = Column(Integer, default=0)
-    records = relationship("Record", backref="tournament", cascade="all, delete")
+    records = relationship("Record", backref="tournament",
+                           cascade="all, delete")
     players = relationship(
         'Player',
         secondary=players_tournaments,

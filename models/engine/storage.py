@@ -10,12 +10,14 @@ import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+
 classes = {
     "Player": Player,
     "Sport": Sport,
     "Tournament": Tournament,
     "Record": Record
     }
+
 
 class DBStorage:
     __engine = None
@@ -24,11 +26,11 @@ class DBStorage:
     def __init__(self):
         """Initializing a DBStorage instance."""
         self.__engine = create_engine("mysql+mysqldb://{}:{}@{}/{}".
-                                    format(getenv("USER_MYSQL"),
-                                           getenv("PWD_MYSQL"),
-                                           getenv("HOST_MYSQL"),
-                                           getenv("DB_MYSQL")),
-                                    pool_pre_ping=True)
+                                      format(getenv("USER_MYSQL"),
+                                             getenv("PWD_MYSQL"),
+                                             getenv("HOST_MYSQL"),
+                                             getenv("DB_MYSQL")),
+                                      pool_pre_ping=True)
         if getenv("MYSQL_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
 

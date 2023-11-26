@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/filters.css">
+    <link rel="stylesheet" href="styles/player.css">
     <link rel="icon" href="images/ic_on.png">
   </head>
   <body>
@@ -21,7 +22,7 @@
               <ul class="list"></ul>
           </div>
           <div class="sports">
-            <a href="squash.html">
+            <a href="sports.html">
               <h3>sports</h3>
             </a>
             <ul class="popover">
@@ -47,6 +48,29 @@
       </a>
       <h1>Champions Sports Club</h1>
   </header>
+  <div class=" container filter_container">
+    <div class="filters">
+      <img src="images/filter_list.png" alt="filter_list">
+      <h2>Filters</h2>
+      <!-- <label for="sport">Choose a sport ti show it's players:</label> -->
+      <select id="sport" name="sport">
+        <option value="karate">karate</option>
+        <option value="squash">Squash</option>
+        <option value="Track">Track & Field</option>
+      </select>
+    </div>
+    <!-- <form class="select_sport">
+      <label>
+        <input type="radio" name="sport" value="squash"> Squash
+      </label>
+      <label>
+        <input type="radio" name="sport" value="karate"> karate
+      </label>
+      <label>
+        <input type="radio" name="sport" value="track_field"> Track and Field
+      </label>
+    </form> -->
+  </div>
     <footer>Sports Club Center &#169 2023</footer>
   </body>
 </html>

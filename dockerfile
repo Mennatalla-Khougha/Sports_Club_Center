@@ -12,4 +12,3 @@ RUN pip3 install SQLAlchemy==1.4.* mysqlclient
 
 # Install Flask and Flask-CORS
 RUN pip3 install flask flask_cors
-

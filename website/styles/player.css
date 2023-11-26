@@ -1,0 +1,21 @@
+.filters {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters img {
+    color: azure;
+}
+
+select {
+    background-color: #16151a;
+    color: azure;
+    border: none;
+    border-radius: 5px;
+}
+
+option {
+    color: azure;
+}
