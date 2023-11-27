@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champion Sports Club</title>
     <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="styles/info.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/filters.css">
-    <link rel="stylesheet" href="styles/player.css">
+    <link rel="stylesheet" href="styles/player_page.css">
     <link rel="icon" href="images/ic_on.png">
   </head>
   <body>
@@ -48,32 +47,26 @@
       </a>
       <h1>Champions Sports Club</h1>
   </header>
-  <div class="filter_container">
-    <div class="filters">
-      <img src="images/filter_list.png" alt="filter_list">
-      <h2>Filters</h2>
-      <select id="sport" name="sport">
-        <option value="karate">karate</option>
-        <option value="squash">Squash</option>
-        <option value="Track">Track & Field</option>
-      </select>
+  <div class="container">
+    <div class="image_stats">
+      <img src="images/karate_competition.jpg" alt="karate_competition">
+      <div class="stats">
+        <ul>
+            <li>Matches Played: 10</li>
+            <li>Matches Win: 7</li>
+            <li>Matches Lost: 2</li>
+        </ul>
+      </div>
     </div>
-    <div class="grid-container">
-      <div class="item_player">
-        <a href="player_page.html"><h2>name</h2></a>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non saepe sunt obcaecati culpa iste nam magnam consectetur pariatur quidem veritatis.</p>
-        <img src="images/karate_players.jpg" alt="">
-      </div>
-      <div class="item_player">
-        <a href="player_page.html"><h2>name</h2></a>
-        <p>some info</p>
-        <img src="images/karate_players.jpg" alt="">
-      </div>
-      <div class="item_player">
-        <a href="player_page.html"><h2>name</h2></a>
-        <p>some info</p>
-        <img src="images/karate_players.jpg" alt="">
-      </div>
+    <div class="data">
+        <ul>
+            <li>Name: George Raafat</li>
+            <li>Age: 19</li>
+            <li>Weight: 60</li>
+            <li>Height: 185</li>
+            <li>ِAchevments: None</li>
+        </ul>
+      <a href="schedules.html"><button>schedules</button></a>
     </div>
   </div>
     <footer>Sports Club Center &#169 2023</footer>
