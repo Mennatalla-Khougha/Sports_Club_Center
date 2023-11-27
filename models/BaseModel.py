@@ -10,6 +10,7 @@ import uuid
 
 Base = declarative_base()
 
+
 class BaseModel:
     """BaseModel Class"""
     id = Column(String(60), primary_key=True)

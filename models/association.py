@@ -4,7 +4,6 @@ from sqlalchemy.orm import relationship
 from models.BaseModel import Base
 
 
-
 players_sports = Table(
     'players_sports', Base.metadata,
     Column('player_id', String(60), ForeignKey('players.id')),

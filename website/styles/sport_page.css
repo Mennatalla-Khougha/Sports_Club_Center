@@ -1,0 +1,15 @@
+.sports_filters {
+    flex: 1;
+    /* min-width: 350px; */
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sports_filters img {
+    max-width: 400px;
+    height: 400px;
+}

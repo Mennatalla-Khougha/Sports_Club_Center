@@ -7,11 +7,13 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.association import players_sports
 
+
 class Sport(BaseModel, Base):
     """Representation of sport"""
     __tablename__ = 'sports'
     name = Column(String(50), nullable=False)
-    tournaments = relationship("Tournament", backref="sport", cascade="all, delete")
+    tournaments = relationship("Tournament", backref="sport",
+                               cascade="all, delete")
     players = relationship(
         'Player',
         secondary=players_sports,
