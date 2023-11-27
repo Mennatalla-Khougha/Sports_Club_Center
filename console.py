@@ -217,11 +217,7 @@ class ConsoleCommand(cmd.Cmd):
         Prints number of instances of a given class.
         Usage: count <class name>
         """
-        count = 0
-        for key in storage.all().keys():
-            if arg in key:
-                count += 1
-        print(count)
+        print(storage.count(arg))
 
 
 if __name__ == '__main__':
