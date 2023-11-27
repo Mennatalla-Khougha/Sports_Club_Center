@@ -1,0 +1,46 @@
+.image_stats {
+    margin: 10px 50px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 350px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_stats img {
+    margin: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+li {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.short_info {
+    max-width: 700px;
+    font-size: 20px;
+    margin-bottom: 50px;
+    padding: 0px 20px;
+}
+
+.data {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.data button{
+    width: 200px;
+    height: 80px;
+    font-size: 25px;
+}
+
+.data ul {
+    padding: 0 10px;
+}
