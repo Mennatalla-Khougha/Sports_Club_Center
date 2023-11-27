@@ -7,37 +7,40 @@ from models.tournament import Tournament
 from datetime import date, datetime
 
 player1 = Player(first_name='george', last_name="raafat", gender='M',
-                 birth_day=date(2004, 9, 29))
+                 birth_day="2004-09-29")
 player2 = Player(first_name='manna', last_name="k", gender='F',
-                 birth_day=date(1994, 5, 11))
+                 birth_day="2004-09-29")
+
+x1 = Player(first_name='x1', last_name="y1", gender='F',
+                 birth_day="2004-09-29")
+
+x2 = Player(first_name='x2', last_name="y2", gender='F',
+                 birth_day="2004-09-29")
 
 
-sport1 = Sport(name='tennis')
-sport2 = Sport(name='squash')
+tennis = Sport(name='tennis')
+squash = Sport(name='squash')
+karate = Sport(name='karate')
 
-tournament_tennis = Tournament(sport_id=sport1.id, name="my tournament",
-                               date=datetime(2023, 12, 15, 17, 30, 0),
+tournament_tennis = Tournament(sport_id=tennis.id, name="my tournament",
+                               date="2023-12-9 10:30",
                                age_range="15-20")
+tournament_tennis2 = Tournament(sport_id=tennis.id, name="my tournament2",
+                               date="2023-12-9 10:30",
+                               age_range="15-20")
+
 # Associate players with sports
-player1.sports.append(sport1)
-player2.sports.append(sport1)
-player2.sports.append(sport2)
+player1.sports.append(tennis)
+player2.sports.append(tennis)
+player2.sports.append(squash)
+x1.sports.append(tennis)
 
 player1.tournaments.append(tournament_tennis)
 player2.tournaments.append(tournament_tennis)
 
-p1_sports = player1.sports
-s1_players = sport1.players
+tournament_tennis2.players.append(player1)
 
-records = tournament_tennis.initial_records()
-player1.save()
-player2.save()
-sport1.save()
-sport2.save()
-tournament_tennis.save()
+tournament_tennis.initial_records()
+tournament_tennis2.initial_records()
 
-print([sport.name for sport in p1_sports])
-print([player.first_name for player in s1_players])
-print([player.first_name for player in tournament_tennis.players])
-print(tournament_tennis.date)
-print([record.to_dict() for record in records])
+storage.save()
