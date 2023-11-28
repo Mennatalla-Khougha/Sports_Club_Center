@@ -18,7 +18,7 @@ class Player(BaseModel, Base):
     birth_day = Column(String(15), nullable=False)
     weight = Column(Float, nullable=True)
     height = Column(Float, nullable=True)
-    address = Column(String(50), nullable=True)
+    address = Column(String(200), nullable=True)
     phone_number = Column(String(50), nullable=True)
     sports = relationship(
         'Sport',
@@ -42,3 +42,30 @@ class Player(BaseModel, Base):
     def records(self, tournament):
         return [record for record in tournament.records
                 if record.player_id == self.id]
+
+    def _can_join(self, tournament):
+        can = False
+        for sport in self.sports:
+            if sport.id == tournament.sport_id:
+                can = True
+        if not can:
+            print(f"this player doesn't play {models.storage.get('Sport', tournament.sport_id).name}")
+            return False
+        birth_day = datetime.strptime(self.birth_day, "%Y-%m-%d")
+        tournament_date = datetime.strptime(tournament.date, "%Y-%m-%d %H:%M")
+        age = tournament_date.year - birth_day.year
+        
+        if birth_day.month > tournament_date.month:
+            age -= 1
+        elif birth_day.month == tournament_date.month:
+            if birth_day.day > tournament_date.day:
+                age -= 1
+        age_range = tournament.age_range.split('-')
+        if int(age_range[0]) <= age < int(age_range[1]):
+            return True
+        print("this player doesn't meet the age range of the tournament")
+        return False
+
+    def join_tournament(self, tournament):
+        if (self._can_join(tournament)):
+            self.tournaments.append(tournament)

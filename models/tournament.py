@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Script for the Tournament model"""
-# import models
+import models
 from models.BaseModel import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey, Integer
@@ -52,3 +52,6 @@ class Tournament(BaseModel, Base):
             record.save()
             records_list.append(record)
         return records_list
+
+    def add_player(self, player):
+        player.join_tournament(self)
