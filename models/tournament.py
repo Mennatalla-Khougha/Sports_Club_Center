@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Script for the Tournament model"""
-import models
+# import models
 from models.BaseModel import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey, Integer
@@ -19,7 +19,7 @@ class Tournament(BaseModel, Base):
     age_range = Column(String(20), nullable=False)
     discription = Column(String(200), nullable=True)
     win_value = Column(Integer, default=0)
-    draw_value = Column(Integer, default=0)
+    # draw_value = Column(Integer, default=0)
     loss_value = Column(Integer, default=0)
     records = relationship("Record", backref="tournament",
                            cascade="all, delete")
