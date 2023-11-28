@@ -20,7 +20,6 @@ class Player(BaseModel, Base):
     height = Column(Float, nullable=True)
     address = Column(String(50), nullable=True)
     phone_number = Column(String(50), nullable=True)
-    photo = Column(Boolean, default=False)
     sports = relationship(
         'Sport',
         secondary=players_sports,
