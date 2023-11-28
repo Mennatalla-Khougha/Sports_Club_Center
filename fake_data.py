@@ -17,7 +17,7 @@ fake = Faker()
 sports = [Sport(name="Karate"), Sport(name="Squash"), Sport(name="Track & Field")]
 # sports = ["Karate", "Squash", "Track & Field"]
 players = []
-tournaments = []
+tournaments = [[], [], []]
 
 for i in range(500):
     g = fake.random_element(elements=('M', 'F'))
@@ -38,7 +38,7 @@ for i in range(500):
                           height=height, address=address))
     for j in range(random.randint(1, 2)):
         random_choice = random.randint(0, 2)
-        sports[random_choice].append(players[i])
+        sports[random_choice].players.append(players[i])
 
 adjectives = ['Grand', 'Elite', 'Championship', 'Classic', 'Supreme', 'Masters', 'Global']
 nouns = ['Challenge', 'Showdown', 'Cup', 'Trophy', 'Clash', 'Competition', 'Invitational']
@@ -59,4 +59,9 @@ for i in range(3):
         else:
             age_range = "23-35"
         win_value = fake.random_element(elements=(0, 3, 3, 3, 5, 5))
+        tournaments[i].append(Tournament(name=tournament_name, sport_id=sports[i].id, date=date, age_range=age_range, win_value=win_value))
+        for player in sports[i].players:
+            if random.randint(1, 3) > 1:
+                player.join_tournament(tournaments[i][j])
 
+storage.save()
