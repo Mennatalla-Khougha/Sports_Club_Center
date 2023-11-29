@@ -11,6 +11,7 @@ from models.record import Record
 from models import storage
 import shlex
 import sqlalchemy
+from PIL import Image
 
 
 classes = ["BaseModel", "Player", "Tournament", "Sport", "Record"]
@@ -92,6 +93,15 @@ class ConsoleCommand(cmd.Cmd):
             print("** some attrebute(s) are missing or invalid **")
             storage.rollback()
             return
+        if isinstance(obj, Player):
+            photo = input("Enter the path of the photo or (n) for no photo: ")
+            if photo != "n":
+                try:
+                    img = Image.open(photo)
+                    new_path = f"website/personal_images/{obj.id}.png"
+                    img.save(new_path, format='PNG', compress_level=0)
+                except IOError as e:
+                    print(e)
         print(obj.id)
 
     def do_show(self, arg):
@@ -156,11 +166,19 @@ class ConsoleCommand(cmd.Cmd):
 
         try:
             data = json.loads(args[2])
-            for key, value in data.items():
-                setattr(obj, key, value)
         except json.JSONDecodeError:
             print("** Invalid JSON format. **")
             return
+        for key, value in data.items():
+            if key == "photo" and args[0] == "Player":
+                try:
+                    img = Image.open(value)
+                    new_path = f"website/personal_images/{obj.id}.png"
+                    img.save(new_path, format='PNG', compress_level=0)
+                except IOError as e:
+                    print(e)
+            else:
+                setattr(obj, key, value)
         obj.save()
 
     def default(self, arg):
@@ -218,6 +236,42 @@ class ConsoleCommand(cmd.Cmd):
         Usage: count <class name>
         """
         print(storage.count(arg))
+
+    def do_append(self, arg):
+        """
+        Add player to tournment or sport.
+        Usage: <player id> <class name> <id>
+        """
+        if not arg:
+            print("** player id missing **")
+            return
+        args = arg.split()
+        player = storage.get("Player", args[0])
+        if not player:
+            print("** no Player instance found **")
+
+        if len(args) < 2:
+            print("** class name missing **")
+            return
+
+        if args[1] not in ("Sport", "Tournament"):
+            print("** not a valid class **")
+            return
+
+        if len(args) < 3:
+            print("** id missing **")
+            return
+
+        obj = storage.get(args[1], args[2])
+        if not obj:
+            print(f"** no {args[1]} instance found **")
+            return
+
+        if args[1] == "Tournament":
+            player.join_tournament(obj)
+        else:
+            player.sports.append(obj)
+        storage.save()
 
 
 if __name__ == '__main__':
