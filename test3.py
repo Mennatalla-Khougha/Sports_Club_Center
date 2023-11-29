@@ -5,8 +5,10 @@ from models.sport import Sport
 from models.record import Record
 from models.tournament import Tournament
 
-for tournament in storage.all(Tournament).values():
-    if (tournament.date > "2023-11-28"):
-        print(tournament.age_range, tournament.date)
-        print([player.birth_day for player in tournament.players])
-        print("_________________________________________")
+# for tournament in storage.all(Tournament).values():
+#     if (tournament.date > "2023-11-28"):
+#         print(tournament.age_range, tournament.date)
+#         print([player.birth_day for player in tournament.players])
+#         print("_________________________________________")
+player = storage.get("Player", "9fc677d1-03d3-473b-9638-6f383ad10853")
+print([sport.name for sport in player.sports])
