@@ -28,12 +28,6 @@ def home_page():
 @app.route('/players', strict_slashes=False)
 def players():
     """ routes the players page """
-    # players = storage.all(Player).values()
-    # players = sorted(players, key=lambda k: (k.first_name, k.last_name))
-
-    # for state in states:
-    #     st_ct.append([state, sorted(state.cities, key=lambda k: k.name)])
-
     sports = storage.all(Sport).values()
     sports = sorted(sports, key=lambda k: k.name)
 
@@ -50,6 +44,34 @@ def player_page(player_id):
     return render_template('player_page.html',
                            player=player,
                            stats=stats)
+
+
+@app.route('/sports', strict_slashes=False)
+def sports():
+    """ routes the sports page """
+    return render_template('sports.html')
+
+
+@app.route('/sports/karate', strict_slashes=False)
+def karate():
+    """ routes the karate page """
+    return render_template('karate.html')
+
+
+@app.route('/sports/squash', strict_slashes=False)
+def squash():
+    """ routes the squash page """
+    return render_template('squash.html')
+
+@app.route('/sports/track_field', strict_slashes=False)
+def track_field():
+    """ routes the track_field page """
+    return render_template('track_field.html')
+
+@app.route('/schedules', strict_slashes=False)
+def schedules():
+    """ routes the schedules page """
+    return render_template('schedules.html')
 
 
 if __name__ == "__main__":

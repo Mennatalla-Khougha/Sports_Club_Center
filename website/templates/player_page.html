@@ -1,79 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Champion Sports Club</title>
-    <link rel="stylesheet" href="../static/styles/common.css" />
-    <link rel="stylesheet" href="../static/styles/header.css" />
-    <link rel="stylesheet" href="../static/styles/footer.css" />
-    <link rel="stylesheet" href="../static/styles/filters.css" />
-    <link rel="stylesheet" href="../static/styles/player_page.css" />
-    <link rel="icon" href="../static/images/ic_on.png" />
-  </head>
-  <body>
-    <header>
-      <section class="options">
-        <div class="players">
-          <a href="players.html">
-            <h3>players</h3>
-          </a>
-          <ul class="list"></ul>
-        </div>
-        <div class="sports">
-          <a href="sports.html">
-            <h3>sports</h3>
-          </a>
-          <ul class="popover">
-            <a href="squash.html">
-              <li>Squash</li>
-            </a>
-            <a href="karate.html">
-              <li>karate</li>
-            </a>
-            <a href="track_field.html">
-              <li>Track and Field</li>
-            </a>
-          </ul>
-        </div>
-        <div class="schedules">
-          <a href="schedules.html">
-            <h3>schedules</h3>
-          </a>
-          <ul class="list"></ul>
-        </div>
-      </section>
-      <a href="index.html">
-        <img src="../static/images/logo.png" alt="club logo" />
-      </a>
-      <h1>Champions Sports Club</h1>
-    </header>
-    <div class="container">
-      <div class="image_stats">
-        <img
-          src="../static/personal_images/{{ player.id ~ '.png' }}"
-          onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
-          alt="Karate Players"
-        />
-        <div class="stats">
-          <ul>
-            <li>Matches Played: {{ stats[0] + stats[1] }}</li>
-            <li>Matches Win: {{ stats[0] }}</li>
-            <li>Matches Lost: {{ stats[1] }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="data">
-        <ul>
-          <li>Name: {{ player.first_name }} {{player.last_name}}</li>
-          <!-- <li>Age: 19</li> -->
-          <li>Weight: {{ player.weight }}</li>
-          <li>Height: {{ player.height }}</li>
-          <!-- <li>ِAchevments: None</li> -->
-        </ul>
-        <a href="schedules.html"><button>schedules</button></a>
-      </div>
+{% extends "base.html" %}
+
+{% block links %}
+<link rel="stylesheet" href="../static/styles/player_page.css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="image_stats">
+    <img
+      src="../static/personal_images/{{ player.id ~ '.png' }}"
+      onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
+      alt="Karate Players"
+    />
+    <div class="stats">
+      <ul>
+        <li>Matches Played: {{ stats[0] + stats[1] }}</li>
+        <li>Matches Win: {{ stats[0] }}</li>
+        <li>Matches Lost: {{ stats[1] }}</li>
+      </ul>
     </div>
-    <footer>Sports Club Center &copy; 2023</footer>
-  </body>
-</html>
+  </div>
+  <div class="data">
+    <ul>
+      <li>Name: {{ player.first_name }} {{player.last_name}}</li>
+      <!-- <li>Age: 19</li> -->
+      <li>Weight: {{ player.weight }}</li>
+      <li>Height: {{ player.height }}</li>
+      <!-- <li>ِAchevments: None</li> -->
+    </ul>
+    <a href="schedules"><button>schedules</button></a>
+  </div>
+</div>
+{% endblock %}
