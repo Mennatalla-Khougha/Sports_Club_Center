@@ -84,6 +84,7 @@ class TestConsole_help(unittest.TestCase):
             self.assertFalse(ConsoleCommand().onecmd("help"))
             self.assertLess(5, len(output.getvalue().strip()))
 
+
 class TestConsole_Create(unittest.TestCase):
     """Unittest for create method from the console"""
     def test_create_player(self):
