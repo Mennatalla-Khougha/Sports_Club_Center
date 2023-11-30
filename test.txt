@@ -4,3 +4,4 @@ USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db HBNB_
 MYSQL_ENV=test USER_MYSQL=club_test PWD_MYSQL=club_test_pwd HOST_MYSQL=localhost DB_MYSQL=club_test_db python3 -m unittest discover tests
 
 cat setup_mysql_dev.sql | mysql -uroot -hlocalhost
+cat setup_mysql_test.sql | mysql -uroot -hlocalhost
