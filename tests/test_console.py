@@ -254,7 +254,27 @@ class TestConsole_append(unittest.TestCase):
                 id_1 = output.getvalue().strip()
                 player = storage.get(Player, id_1)
                 self.assertEqual(0, len(player.sports))
-                update = f'append {id_1} sport {sport.id}'
-                self.assertFalse(ConsoleCommand().onecmd(update))
+                append = f'append {id_1} Sport {sport.id}'
+                self.assertFalse(ConsoleCommand().onecmd(append))
                 self.assertEqual(1, len(player.sports))
                 self.assertEqual(sport, player.sports[0])
+
+    def test_append_Tournament(self):
+        """test append player"""
+        tournament = list(storage.all(Tournament).values())[-1]
+        args = 'create Player {"first_name": "George",\
+            "last_name": "Rafaat", "gender": "M",\
+                "birth_day": "2004-9-29"}'
+        with patch('builtins.input', return_value='n'):
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(ConsoleCommand().onecmd(args))
+                id_1 = output.getvalue().strip()
+                player = storage.get(Player, id_1)
+                for sport in storage.all(Sport).values():
+                    append = f'append {id_1} Sport {sport.id}'
+                    self.assertFalse(ConsoleCommand().onecmd(append))
+                self.assertEqual(0, len(player.tournaments))
+                append = f'append {id_1} Tournament {tournament.id}'
+                self.assertFalse(ConsoleCommand().onecmd(append))
+                self.assertEqual(1, len(player.tournaments))
+                self.assertEqual(tournament, player.tournaments[0])
