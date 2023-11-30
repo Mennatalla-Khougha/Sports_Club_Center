@@ -39,9 +39,15 @@ class Player(BaseModel, Base):
             kwargs["birth_day"] = None
         super().__init__(*args, **kwargs)
 
-    def records(self, tournament):
-        return [record for record in tournament.records
-                if record.player_id == self.id]
+    def records(self):
+        stats = [0, 0]
+        for tournament in self.tournaments:
+            for record in tournament.records:
+                if record.player_id == self.id:
+                    stats[0] += record.matches_won
+                    stats[1] += record.matches_lost
+                    break
+        return stats
 
     def _can_join(self, tournament):
         can = False
