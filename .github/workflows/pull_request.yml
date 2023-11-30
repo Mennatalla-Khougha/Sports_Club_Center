@@ -3,9 +3,8 @@ name: pushing
 on:
  push:
    branches:
-    - fake_branch 
-    #  - George
-    #  - Menna
+     - George
+     - Menna
 
 jobs:
  create-pull-request:
