@@ -1,3 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}
+
+#prev, #next {
+    background-color: lightseagreen;
+    border: none;
+    border-radius: 5px;
+    color: #d3d3d3;
+    font-size: 22px;
+    padding: 5px;
+    width:100px;
+    height: 50px;
+    margin: 10px;
+}
+
 .calender {
     background-color: #000000;
     color: #d3d3d3;
