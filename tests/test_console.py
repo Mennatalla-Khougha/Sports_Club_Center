@@ -36,6 +36,54 @@ class TestConsole_quit(unittest.TestCase):
             self.assertTrue(ConsoleCommand().onecmd("EOF"))
 
 
+class TestConsole_help(unittest.TestCase):
+    """Unittest for exiting the prompt"""
+
+    def test_help(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help help"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_create(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help create"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_show(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help show"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_destroy(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help destroy"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_all(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help all"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_count(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help count"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_update(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help update"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_append(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help append"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
+    def test_no_arg(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd("help"))
+            self.assertLess(5, len(output.getvalue().strip()))
+
 class TestConsole_Create(unittest.TestCase):
     """Unittest for create method from the console"""
     def test_create_player(self):
@@ -110,3 +158,103 @@ class TestConsole_show(unittest.TestCase):
             self.assertFalse(ConsoleCommand()\
                 .onecmd(f"show Tournament {id_1}"))
             self.assertIn(id_1, output.getvalue())
+
+
+class TestConsole_destroy(unittest.TestCase):
+    """Unittest for destroy method from the console"""
+    def test_destroy_player(self):
+        """test destroy player"""
+        args = 'create Player {"first_name": "George",\
+            "last_name": "Rafaat", "gender": "M",\
+                "birth_day": "2004-9-29"}'
+        with patch('builtins.input', return_value='n'):
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(ConsoleCommand().onecmd(args))
+                id_1 = output.getvalue().strip()
+                self.assertIsNotNone(storage.get(Player, id_1))
+                self.assertFalse(ConsoleCommand().onecmd(f"destroy Player {id_1}"))
+                self.assertIsNone(storage.get(Player, id_1))
+
+    def test_destroy_sport(self):
+        """test destroy sport"""
+        args = 'create Sport {"name": "Track & Field"}'
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd(args))
+            id_1 = output.getvalue().strip()
+            self.assertIsNotNone(storage.get(Sport, id_1))
+            self.assertFalse(ConsoleCommand().onecmd(f"destroy Sport {id_1}"))
+            self.assertIsNone(storage.get(Sport, id_1))
+
+    def test_destroy_tournment(self):
+        """test destroy tournament"""
+        sport = list(storage.all(Sport).values())[-1]
+        args = f'create Tournament {{"name": "Elite_masters",\
+            "date": "2023-12-9 10:30", "age_range": "19-23",\
+                "sport_id": "{sport.id}"}}'
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd(args))
+            id_1 = output.getvalue().strip()
+            self.assertIsNotNone(storage.get(Tournament, id_1))
+            self.assertFalse(ConsoleCommand()\
+                .onecmd(f"destroy Tournament {id_1}"))
+            self.assertIsNone(storage.get(sport, id_1))
+
+
+class TestConsole_update(unittest.TestCase):
+    """Unittest for update method from the console"""
+    def test_update_player(self):
+        """test update player"""
+        args = 'create Player {"first_name": "George",\
+            "last_name": "Rafaat", "gender": "M",\
+                "birth_day": "2004-9-29"}'
+        with patch('builtins.input', return_value='n'):
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(ConsoleCommand().onecmd(args))
+                id_1 = output.getvalue().strip()
+                update = f'update Player {id_1} {{"first_name": "new_name"}}'
+                self.assertFalse(ConsoleCommand().onecmd(update))
+                self.assertEqual("new_name", storage.get(Player, id_1).first_name)
+
+    def test_update_sport(self):
+        """test update sport"""
+        args = 'create Sport {"name": "Track & Field"}'
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd(args))
+            id_1 = output.getvalue().strip()
+            update = f'update Sport {id_1} {{"name": "karate"}}'
+            self.assertFalse(ConsoleCommand().onecmd(update))
+            self.assertEqual("karate", storage.get(Sport, id_1).name)
+
+    def test_update_tournment(self):
+        """test update tournament"""
+        sport = list(storage.all(Sport).values())[-1]
+        args = f'create Tournament {{"name": "Elite_masters",\
+            "date": "2023-12-9 10:30", "age_range": "19-23",\
+                "sport_id": "{sport.id}"}}'
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(ConsoleCommand().onecmd(args))
+            id_1 = output.getvalue().strip()
+            update = f'update Tournament {id_1} {{"name": "new_name", "win_value": 5}}'
+            self.assertFalse(ConsoleCommand().onecmd(update))
+            self.assertEqual("new_name", storage.get(Tournament, id_1).name)
+            self.assertEqual(5, storage.get(Tournament, id_1).win_value)
+
+
+class TestConsole_append(unittest.TestCase):
+    """Unittest for append method from the console"""
+    def test_append_Sport(self):
+        """test append player"""
+        sport = list(storage.all(Sport).values())[-1]
+        args = 'create Player {"first_name": "George",\
+            "last_name": "Rafaat", "gender": "M",\
+                "birth_day": "2004-9-29"}'
+        with patch('builtins.input', return_value='n'):
+            with patch("sys.stdout", new=StringIO()) as output:
+                self.assertFalse(ConsoleCommand().onecmd(args))
+                id_1 = output.getvalue().strip()
+                player = storage.get(Player, id_1)
+                self.assertEqual(0, len(player.sports))
+                update = f'append {id_1} sport {sport.id}'
+                self.assertFalse(ConsoleCommand().onecmd(update))
+                self.assertEqual(1, len(player.sports))
+                self.assertEqual(sport, player.sports[0])
