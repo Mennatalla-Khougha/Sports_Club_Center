@@ -36,3 +36,35 @@ The project provides an interface for their favorite club, giving them the abili
 ## The Website
 
 Home Page:
+![Home Page](Website_images/home_page.png)
+
+Sports Page:
+![Sports Page](Website_images/sports_page.png)
+
+Karate Page (tempelt for all Sports):
+![Karate Page](Website_images/karate_page.png)
+
+Players Page:
+![Players Page](Website_images/players_page.png)
+
+a Player Page (tempelt for all Players):
+![a Player Page](Website_images/a_player_page.png)
+
+Schedules Page:
+![Schedules Page](Website_images/schedules_page.png)
+
+## Console
+
+The main way to mange and insert data in the DataBase
+
+### usage
+
+`USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db ./console.py`
+
+```text
+>>> help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  append  count  create  destroy  help  quit  show  update
+```
