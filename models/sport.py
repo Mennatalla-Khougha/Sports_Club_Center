@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 """Script for the Sport model"""
-import models
 from models.BaseModel import BaseModel, Base
-import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models.association import players_sports
 
 
 class Sport(BaseModel, Base):
@@ -14,11 +11,9 @@ class Sport(BaseModel, Base):
     name = Column(String(50), nullable=False)
     tournaments = relationship("Tournament", backref="sport",
                                cascade="all, delete")
-    players = relationship(
-        'Player',
-        secondary=players_sports,
-        back_populates='sports'
-        )
+    players = relationship("Player",
+                           back_populates="sport",
+                           cascade="all, delete")
 
     def __init__(self, *args, **kwargs):
         """initializes player"""

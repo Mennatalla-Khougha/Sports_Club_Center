@@ -2,9 +2,9 @@
 """Script for the Player model"""
 import models
 from models.BaseModel import BaseModel, Base
-from models.association import players_sports, players_tournaments
+from models.association import players_tournaments
 import sqlalchemy
-from sqlalchemy import Column, String, CHAR, Float, Boolean
+from sqlalchemy import Column, String, CHAR, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -12,6 +12,7 @@ from datetime import datetime
 class Player(BaseModel, Base):
     """Representation of player"""
     __tablename__ = 'players'
+    sport_id = Column(String(60), ForeignKey('sports.id'), nullable=False)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
     gender = Column(CHAR(1), nullable=False)
@@ -20,11 +21,7 @@ class Player(BaseModel, Base):
     height = Column(Float, nullable=True)
     address = Column(String(200), nullable=True)
     phone_number = Column(String(50), nullable=True)
-    sports = relationship(
-        'Sport',
-        secondary=players_sports,
-        back_populates='players'
-        )
+    sport = relationship('Sport', back_populates='players')
     tournaments = relationship(
         'Tournament',
         secondary=players_tournaments,
