@@ -8,23 +8,22 @@
 <div class="container">
   <div class="image_stats">
     <img
-      src="../static/personal_images/{{ player.id ~ '.png' }}"
+      src="../static/personal_images/{{ tournament.name ~ '.png' }}"
       onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
       alt="Karate Players"
     />
     <div class="stats">
       <ul>
-        <li>Score: {{ stats[0] }}</li>
-        <li>Matches Played: {{ stats[1] + stats[2] }}</li>
-        <li>Matches Win: {{ stats[1] }}</li>
-        <li>Matches Lost: {{ stats[2] }}</li>
+        <li>Matches Played: {{ stats[0] + stats[1] }}</li>
+        <li>Matches Win: {{ stats[0] }}</li>
+        <li>Matches Lost: {{ stats[1] }}</li>
       </ul>
     </div>
   </div>
   <div class="data">
     <ul>
       <li>Name: {{ player.first_name }} {{player.last_name}}</li>
-      <li>Age: {{ age }}</li>
+      <!-- <li>Age: 19</li> -->
       <li>Weight: {{ player.weight }}</li>
       <li>Height: {{ player.height }}</li>
       <!-- <li>ِAchevments: None</li> -->

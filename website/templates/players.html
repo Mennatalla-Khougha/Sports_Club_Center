@@ -17,36 +17,19 @@
     </select>
   </div>
   <div class="grid-container">
+    {% for i in range(size) %}
     <div class="item_player">
-      <a href="player_page.html"><h2>name</h2></a>
+      <a href="/players/{{ players[i].id }}"><h2>{{ players[i].first_name}} {{ players[i].last_name }}</h2></a>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non saepe sunt
-        obcaecati culpa iste nam magnam consectetur pariatur quidem veritatis.
+        {{ ages[i] }} years old {{ players[i].sport.name }} player, participated in {{ players[i].played_tournament() }} tournaments.
       </p>
       <img
-        src=""
+        src="../static/personal_images/{{ players[i].id }}.png"
         onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
-        alt="Karate Players"
+        alt="{{ players[i].sport.name }} player"
       />
     </div>
-    <div class="item_player">
-      <a href="player_page.html"><h2>name</h2></a>
-      <p>some info</p>
-      <img
-        src=""
-        onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
-        alt="Karate Players"
-      />
-    </div>
-    <div class="item_player">
-      <a href="player_page.html"><h2>name</h2></a>
-      <p>some info</p>
-      <img
-        src=""
-        onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
-        alt="Karate Players"
-      />
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
