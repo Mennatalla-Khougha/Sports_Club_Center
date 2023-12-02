@@ -14,14 +14,15 @@ fake = Faker()
 # players = 500
 # tournments = 60
 
-sports = [Sport(name="Karate"), Sport(name="Squash"), Sport(name="Track & Field")]
+sports = [Sport(name="Karate"), Sport(name="Squash"),
+ Sport(name="Track & Field")]
 # sports = ["Karate", "Squash", "Track & Field"]
 players = []
 tournaments = [[], [], []]
 
 for i in range(500):
-    g = fake.random_element(elements=('M', 'F'))
-    first_name = fake.first_name_male() if g=='M' else fake.first_name_female()
+    g = random.choice(['M', 'F'])
+    first_name = fake.first_name_male() if g =='M' else fake.first_name_female()
     last_name = fake.last_name()
     birth_day = str(fake.date_of_birth(minimum_age=5, maximum_age=35))
     if random.randint(1, 5) > 1:
@@ -35,10 +36,10 @@ for i in range(500):
     address = fake.address()
     players.append(Player(first_name=first_name, last_name=last_name,
                           gender=g, birth_day=birth_day, weight=weight,
-                          height=height, address=address))
-    for j in range(random.randint(1, 2)):
-        random_choice = random.randint(0, 2)
-        sports[random_choice].players.append(players[i])
+                          height=height, address=address,
+                          sport_id=sports[random.randint(0, 2)].id))
+
+storage.save()
 
 adjectives = ['Grand', 'Elite', 'Championship', 'Classic', 'Supreme', 'Masters', 'Global']
 nouns = ['Challenge', 'Showdown', 'Cup', 'Trophy', 'Clash', 'Competition', 'Invitational']
@@ -58,10 +59,15 @@ for i in range(3):
             age_range = "18-23"
         else:
             age_range = "23-35"
-        win_value = fake.random_element(elements=(0, 3, 3, 3, 5, 5))
+        win_value = random.choice([0, 3, 3, 3, 5, 5])
         tournaments[i].append(Tournament(name=tournament_name, sport_id=sports[i].id, date=date, age_range=age_range, win_value=win_value))
         for player in sports[i].players:
             if random.randint(1, 3) > 1:
                 player.join_tournament(tournaments[i][j])
+        if (date < "2023-12-02" and len(tournaments[i][j].players) != 0):
+            tournaments[i][j].initial_records()
+            for player in tournaments[i][j].players:
+                for k in range(random.randint(1, 12)):
+                    tournaments[i][j].update_records(player.id, random.choice([True, False]))
 
 storage.save()

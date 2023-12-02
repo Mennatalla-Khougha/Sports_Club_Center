@@ -46,12 +46,21 @@ class Tournament(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     def initial_records(self):
-        records_list = []
         for player in self.players:
             record = Record(tournament_id=self.id, player_id=player.id)
             record.save()
-            records_list.append(record)
-        return records_list
+
+    def update_records(self, id1, win=True):
+        for record in self.records:
+            if record.player_id == id1:
+                record.matches_played += 1
+                if win:
+                    record.matches_won += 1
+                    record.score += self.win_value
+                else:
+                    record.matches_lost += 1
+                break
+
 
     def add_player(self, player):
         player.join_tournament(self)

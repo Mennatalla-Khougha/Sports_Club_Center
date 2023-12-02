@@ -16,7 +16,7 @@ class Record(BaseModel, Base):
     matches_played = Column(Integer, default=0)
     matches_won = Column(Integer, default=0)
     matches_lost = Column(Integer, default=0)
-    matches_drown = Column(Integer, default=0)
+    # matches_drown = Column(Integer, default=0)
     score = Column(Integer, default=0)
 
     def __init__(self, *args, **kwargs):
