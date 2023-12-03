@@ -2,6 +2,7 @@
 
 {% block links %}
 <link rel="stylesheet" href="../static/styles/player.css" />
+<script src="../static/scripts/players.js" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -16,20 +17,6 @@
       {% endfor %}
     </select>
   </div>
-  <div class="grid-container">
-    {% for i in range(size) %}
-    <div class="item_player">
-      <a href="/players/{{ players[i].id }}"><h2>{{ players[i].first_name}} {{ players[i].last_name }}</h2></a>
-      <p>
-        {{ ages[i] }} years old {{ players[i].sport.name }} player, participated in {{ players[i].played_tournament() }} tournaments.
-      </p>
-      <img
-        src="../static/personal_images/{{ players[i].id }}.png"
-        onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
-        alt="{{ players[i].sport.name }} player"
-      />
-    </div>
-    {% endfor %}
-  </div>
+  <div class="grid-container"></div>
 </div>
 {% endblock %}

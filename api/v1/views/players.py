@@ -29,11 +29,6 @@ def players_from_sport_id(sport_id):
     """Retrieves the list of all Player objects of a Sport"""
     sport = storage.get(Sport, sport_id)
     if sport:
-        lst = []
-        for player in sport.players:
-            myDict = player.to_dict()
-            myDict["played_tournaments"] = player.played_tournaments()
-            myDict["age"] = player.age()
-            lst.append(myDict)
-        return jsonify(lst)
+        players = [player.to_dict() for player in sport.players]
+        return jsonify(players)
     abort(404)
