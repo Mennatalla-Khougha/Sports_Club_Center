@@ -8,14 +8,12 @@ from models.sport import Sport
 from models.tournament import Tournament
 from models.record import Record
 from flask import Flask, render_template, abort, request, redirect, url_for
-from flask_security import login_required
+from flask_security import login_required, current_user
 from datetime import datetime
-from website.user_table import user_datastore, app, db
+from website.user_table import user_datastore, app, db, Role
 from flask_security.utils import hash_password
-# from datetime import datetime
+from datetime import datetime
 # app = Flask(__name__)
-
-
 
 
 @app.teardown_appcontext
@@ -34,7 +32,12 @@ def players():
     sports = storage.all(Sport).values()
     sports = sorted(sports, key=lambda k: k.name)
 
-    return render_template('players.html', sports=sports)
+    players = storage.all(Player).values()
+    players = sorted(players, key=lambda k: (k.first_name, k.last_name))
+    ages = [player.age(datetime.now()) for player in players]
+
+    return render_template('players.html',
+                           sports=sports, players=players, ages=ages, size=len(ages))
 
 @app.route('/players/<player_id>', strict_slashes=False)
 def player_page(player_id):
@@ -81,9 +84,20 @@ def schedules():
 def register():
     """routes the register page"""
     if request.method == 'POST':
+        user_role = Role.query.filter_by(name='user').first()
+        roles = []
+        if user_role:
+            roles.append(user_role)
+        if current_user.is_authenticated and current_user.has_role('admin'):
+            role_name = request.form.get('roles')
+            role = Role.query.filter_by(name=role_name).first()
+            if role:
+                roles.append(role)
         user_datastore.create_user(
             email=request.form.get('email'),
-            password=hash_password(request.form.get('password'))
+            password=hash_password(request.form.get('password')),
+            confirmed_at=datetime.utcnow(),
+            roles=roles
         )
         db.session.commit()
         

@@ -9,3 +9,5 @@ cat setup_mysql_dev.sql | mysql -u root -h localhost
 cat setup_mysql_test.sql | mysql -u root -h localhost
 
 cat dump_file2.sql | mysql -u root
+
+USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db python3 create_admin.py
