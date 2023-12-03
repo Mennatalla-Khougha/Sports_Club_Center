@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block links %}
+<!-- <link rel="stylesheet" href="../static/styles/info.css" /> -->
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<form method="post">
+    Email: <input type="email" name="email">
+    Password: <input type="password" name="password">
+    <input type="submit">
+</form>
+</div>
+{% endblock %}

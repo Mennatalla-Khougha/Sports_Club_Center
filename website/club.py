@@ -7,9 +7,15 @@ from models.player import Player
 from models.sport import Sport
 from models.tournament import Tournament
 from models.record import Record
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request, redirect, url_for
+from flask_security import login_required
 from datetime import datetime
-app = Flask(__name__)
+from website.user_table import user_datastore, app, db
+from flask_security.utils import hash_password
+# from datetime import datetime
+# app = Flask(__name__)
+
+
 
 
 @app.teardown_appcontext
@@ -76,6 +82,25 @@ def schedules():
     """ routes the schedules page """
     return render_template('schedules.html')
 
+@app.route('/register', methods=['POST','GET'],strict_slashes=False)
+def register():
+    """routes the register page"""
+    if request.method == 'POST':
+        user_datastore.create_user(
+            email=request.form.get('email'),
+            password=hash_password(request.form.get('password'))
+        )
+        db.session.commit()
+        
+        return redirect(url_for('profile'))
+
+    return render_template('register.html')
+
+@app.route('/profile')
+@login_required
+def profile():
+    """routes the profile page"""
+    return render_template('profile.html')
 
 if __name__ == "__main__":
     """ Main Function """

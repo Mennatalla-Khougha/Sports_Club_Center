@@ -3,9 +3,9 @@ USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db HBNB_
 
 MYSQL_ENV=test USER_MYSQL=club_test PWD_MYSQL=club_test_pwd HOST_MYSQL=localhost DB_MYSQL=club_test_db python3 -m unittest discover tests
 
-USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db HBNB_API_HOST=0.0.0.0 HBNB_API_PORT=5000 python3 -m website.club
+USER_MYSQL=admin PWD_MYSQL=admin_pwd HOST_MYSQL=localhost DB_MYSQL=club_db HBNB_API_HOST=0.0.0.0 HBNB_API_PORT=5001 python3 -m website.club
 
 cat setup_mysql_dev.sql | mysql -u root -h localhost
 cat setup_mysql_test.sql | mysql -u root -h localhost
 
-cat dump_file.sql | mysql -u root
+cat dump_file2.sql | mysql -u root
