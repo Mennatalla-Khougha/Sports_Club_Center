@@ -34,12 +34,7 @@ def players():
     sports = storage.all(Sport).values()
     sports = sorted(sports, key=lambda k: k.name)
 
-    players = storage.all(Player).values()
-    players = sorted(players, key=lambda k: (k.first_name, k.last_name))
-    ages = [player.age(datetime.now()) for player in players]
-
-    return render_template('players.html',
-                           sports=sports, players=players, ages=ages, size=len(ages))
+    return render_template('players.html', sports=sports)
 
 @app.route('/players/<player_id>', strict_slashes=False)
 def player_page(player_id):
