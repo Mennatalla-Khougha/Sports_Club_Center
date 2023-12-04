@@ -78,16 +78,16 @@ class Player(BaseModel, Base):
             self.tournaments.append(tournament)
 
     def played_tournaments(self):
-        count = 0
+        tournaments = []
         date = datetime.now().strftime("%Y-%m-%d")
         for tournament in self.tournaments:
             if tournament.date < date:
-                count += 1
-        return count
+                tournaments.append(tournament)
+        return tournaments
 
     def to_dict(self):
         myDict = super().to_dict()
-        myDict["played_tournaments"] = self.played_tournaments()
+        myDict["played_tournaments"] = len(self.played_tournaments())
         myDict["age"] = self.age(datetime.now())
         myDict["sport"] = self.sport.name
         return myDict

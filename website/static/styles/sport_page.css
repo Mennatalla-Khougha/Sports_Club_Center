@@ -1,19 +1,19 @@
 .sports_filters {
-    flex: 1;
-    /* min-width: 350px; */
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+  flex: 1;
+  /* min-width: 350px; */
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .sports_filters img {
-    max-width: 400px;
-    height: 400px;
+  max-width: 400px;
+  height: 400px;
 }
 
 .sprots_container {
-    margin: 200px 0;
+  margin: 200px 0;
 }

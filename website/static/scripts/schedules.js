@@ -40,7 +40,11 @@ function updateCalender() {
   }
 
   for (let i = 1; i <= lastDay; i++) {
-    if (i === myDate.getDate() && monthInx === thisMonth && myDate.getFullYear() === thisYear) {
+    if (
+      i === myDate.getDate() &&
+      monthInx === thisMonth &&
+      myDate.getFullYear() === thisYear
+    ) {
       days += `<div class= "today">${i}</div>`;
     } else {
       days += `<div>${i}</div>`;
