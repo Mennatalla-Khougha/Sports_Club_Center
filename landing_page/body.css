@@ -1,0 +1,114 @@
+section {
+    padding: 2rem 7%;
+}
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: url(images/running_home_background.jpg) no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+.home .content {
+    max-width: 60rem;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.home .content h3 {
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: #1d1d2d;
+}
+
+.home .content p {
+    font-size: 1rem;
+    font-weight: lighter;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #1d1d2d;
+}
+
+.sports, .tournament {
+    padding: 0;
+}
+
+.sports .row,
+ .tournament .row {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sports .row {
+    background: #deb887;
+}
+
+.tournament .row {
+    background: #87ADDE;
+}
+
+.sports .row .img,
+ .tournament .row .img {
+    flex: 1 1 45rem
+}
+
+.sports .row .img img,
+ .tournament .row .img img{
+    width: 100%;
+}
+
+.sports .row .content ,
+ .tournament .row .content{
+    flex: 1 1 45rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.sports .row .content h3 {
+    font-size: 3rem;
+    color: #a52a2a7e;
+
+}
+ .tournament .row .content h3 {
+    font-size: 3rem;
+    color: #5059c0;
+}
+
+
+.sports .row .content p,
+.tournament .row .content p {
+    font-size: 1rem;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+.heading {
+    text-align: center;
+    color: #1d1d2da3;
+    text-transform: uppercase;
+    padding-bottom: 3.5rem;
+    font-size: 4rem;
+}
+
+.heading span {
+text-transform: uppercase;
+    color: #1d1d2d;
+}
+
+/* .develop {
+    background: #DE87D9;
+} */
+
+@media screen and (max-width: 725px) {
+    section {
+        padding: 2rem;
+    }
+
+    .home .content h3 {
+        font-size: 3rem;
+    }
+}
