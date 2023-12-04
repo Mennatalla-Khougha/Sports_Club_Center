@@ -1,10 +1,6 @@
-{% extends "base.html" %}
-
-{% block links %}
+{% extends "base.html" %} {% block links %}
 <link rel="stylesheet" href="../static/styles/player_page.css" />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="container">
   <div class="image_stats">
     <img
@@ -18,6 +14,26 @@
         <li>Matches Played: {{ stats[1] + stats[2] }}</li>
         <li>Matches Win: {{ stats[1] }}</li>
         <li>Matches Lost: {{ stats[2] }}</li>
+        <li>
+          Played tournaments
+          <div class="grid-container">
+            <div class="grid_item">
+              <p>name</p>
+              <p>score</p>
+              <p>won</p>
+              <p>lost</p>
+            </div>
+            {% for tournament in player.played_tournaments() %}
+            {% set record = tournament.get_record(player.id) %}
+            <div class="grid_item">
+              <h3>{{ tournament.name }}</h3>
+              <p>{{ record.score }}</p>
+              <p>{{ record.matches_won }}</p>
+              <p>{{ record.matches_lost }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </li>
       </ul>
     </div>
   </div>

@@ -70,3 +70,9 @@ class Tournament(BaseModel, Base):
         myDict = super().to_dict()
         myDict["sport"] = self.sport.name
         return myDict
+
+    def get_record(self, player_id):
+        for record in self.records:
+            if record.player_id == player_id:
+                return record
+        return None
