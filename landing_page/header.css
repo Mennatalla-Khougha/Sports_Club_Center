@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito:wght@200;300;400;500;700&display=swap');
+
+/* :root {
+    --main-color:#d3ad7f;
+    --black:#13131a;
+    --bg:#010103;
+    --border:.1rem solid rgba(255,255,255,.3);
+} */
+
+* {
+    font-family: 'Roboto', 'sans-sarif';
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2 linear;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5px;
+}
+
+body {
+    background: #2A3746;
+}
+
+.header {
+    height: 110px; width: 100%;
+    background-color: #171e26;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: fixed; z-index: 1000;
+    top: 0; left: 0; right: 0;
+    padding: 1.5rem 7%;
+}
+
+header img {
+    height: 80px; width: 80px;
+    border-radius: 50%; border: none;
+    position: fixed;
+    top: 20px; left: 30px;
+}
+
+.header .navbar {
+    display: flex; gap: 20px;
+}
+
+.header .navbar a {
+    font-size: 1.6rem;
+    color: #f0ffff;
+}
+
+.header .navbar a:hover {
+    color: #768aa7;
+    border-bottom: .1rem solid #768aa7;
+    padding-bottom: .5rem;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.hamburger-menu div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: #070707;
+}
+
+@media screen and (max-width: 725px) {
+    .header .navbar {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .header {
+        justify-content: space-between;
+    }
+    
+    .header a img {
+        position: absolute;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%; 
+        left: 0; 
+        flex-direction: column; 
+        background-color: #768aa7;
+        width: 100%; 
+        align-items: center; 
+        justify-content: center;
+        display: none;
+        font-size: 1rem;
+    }
+    .navbar.show {
+        display: flex; 
+    }
+
+    .header .navbar a:hover {
+        color: #171e26;
+        border-bottom: .1rem solid #171e26;
+        padding-bottom: .5rem;
+        
+    }
+}
