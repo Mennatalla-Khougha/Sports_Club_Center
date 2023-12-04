@@ -75,6 +75,6 @@ li {
 
 @media (max-width: 725px) {
   .grid_item h3 {
-      font-size: 16px;
+    font-size: 16px;
   }
 }

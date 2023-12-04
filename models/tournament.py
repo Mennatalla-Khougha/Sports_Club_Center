@@ -52,15 +52,16 @@ class Tournament(BaseModel, Base):
             record.save()
 
     def update_records(self, id1, win=True):
-        for record in self.records:
-            if record.player_id == id1:
-                record.matches_played += 1
-                if win:
-                    record.matches_won += 1
-                    record.score += self.win_value
-                else:
-                    record.matches_lost += 1
-                break
+        record = self.get_record(id1)
+        if not record:
+            return
+        record.matches_played += 1
+        if win:
+            record.matches_won += 1
+            record.score += self.win_value
+        else:
+            record.matches_lost += 1
+        record.save()
 
 
     def add_player(self, player):
