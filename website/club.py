@@ -72,6 +72,14 @@ def schedules():
     return render_template('schedules.html')
 
 
+@app.route('/tournaments', strict_slashes=False)
+def tournaments():
+    """ routes the tournaments page """
+    sports = storage.all(Sport).values()
+    sports = sorted(sports, key=lambda k: k.name)
+
+    return render_template('tournaments.html', sports=sports)
+
 if __name__ == "__main__":
     """ Main Function """
     host = getenv('HBNB_API_HOST', '0.0.0.0')

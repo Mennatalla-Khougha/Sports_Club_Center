@@ -28,6 +28,7 @@ class Tournament(BaseModel, Base):
         secondary=players_tournaments,
         back_populates='tournaments'
         )
+    sport = relationship('Sport', back_populates='tournaments')
 
     def __init__(self, *args, **kwargs):
         """initializes tournament"""
@@ -64,3 +65,8 @@ class Tournament(BaseModel, Base):
 
     def add_player(self, player):
         player.join_tournament(self)
+
+    def to_dict(self):
+        myDict = super().to_dict()
+        myDict["sport"] = self.sport.name
+        return myDict

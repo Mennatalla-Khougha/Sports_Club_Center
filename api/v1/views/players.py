@@ -10,9 +10,9 @@ from models.sport import Sport
 @app_views.route('/players', strict_slashes=False)
 def players():
     """Retrieves the list of all Player objects"""
-    players = []
-    for player in storage.all(Player).values():
-        players.append(player.to_dict())
+    players = list(storage.all(Player).values())
+    players = sorted(players, key=lambda k: (k.first_name, k.last_name))
+    players = list(map(lambda p: p.to_dict(), players))
     return jsonify(players)
 
 

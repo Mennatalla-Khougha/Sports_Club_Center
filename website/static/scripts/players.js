@@ -13,17 +13,8 @@ fetch(api)
     return response.json();
   })
   .then((data) => {
-    data.sort((a, b) => {
-      if (a.first_name < b.first_name) return -1;
-      if (a.first_name > b.first_name) return 1;
-
-      if (a.last_name < b.last_name) return -1;
-      if (a.last_name > b.last_name) return 1;
-
-      return 0;
-    });
     for (const player of data) {
-      let text = `<div class="item_player">`;
+      let text = `<div class="grid_item">`;
       text += `<a href="/players/${player.id}"><h2>${player.first_name} ${player.last_name}</h2></a>`;
       text += `<p>${player.age} years old ${player.sport} player, participated in ${player.played_tournaments} tournaments.</p>`;
       text += `<img src="../static/personal_images/${player.id}.png" onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'" alt="${player.sport} player" />`;

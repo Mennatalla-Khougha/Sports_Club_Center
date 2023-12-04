@@ -10,9 +10,9 @@ from models.sport import Sport
 @app_views.route('/tournaments', strict_slashes=False)
 def tournaments():
     """Retrieves the list of all tournament objects"""
-    tournaments = []
-    for tournament in storage.all(Tournament).values():
-        tournaments.append(tournament.to_dict())
+    tournaments = list(storage.all(Tournament).values())
+    tournaments = sorted(tournaments, key=lambda k: k.date, reverse=True)
+    tournaments = list(map(lambda t: t.to_dict(), tournaments))
     return jsonify(tournaments)
 
 

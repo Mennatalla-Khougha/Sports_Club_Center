@@ -9,7 +9,7 @@ class Sport(BaseModel, Base):
     """Representation of sport"""
     __tablename__ = 'sports'
     name = Column(String(50), nullable=False)
-    tournaments = relationship("Tournament", backref="sport",
+    tournaments = relationship("Tournament", back_populates="sport",
                                cascade="all, delete")
     players = relationship("Player",
                            back_populates="sport",
