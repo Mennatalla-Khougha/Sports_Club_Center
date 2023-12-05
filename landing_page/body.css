@@ -73,11 +73,11 @@ section {
     color: #a52a2a7e;
 
 }
+
  .tournament .row .content h3 {
     font-size: 3rem;
     color: #5059c0;
 }
-
 
 .sports .row .content p,
 .tournament .row .content p {
@@ -95,20 +95,128 @@ section {
 }
 
 .heading span {
-text-transform: uppercase;
+    text-transform: uppercase;
     color: #1d1d2d;
 }
 
-/* .develop {
-    background: #DE87D9;
-} */
+.about .box_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
 
-@media screen and (max-width: 725px) {
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 500px;
+    gap: 20px;
+    background: #171e26;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.box h3 {
+    font-size: 1.5rem;
+    color: #87ADDE;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+.box p {
+    padding: 30px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #f0ffff;
+    margin-top:0;
+    padding-top: 10px;
+}
+
+.box_container .about_card p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.box_container .about_card p{
+    line-height: 1.5;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.box img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.social_media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    height: 60px;
+    width: 100%;
+    border-top: 1px #cccccc solid;
+    position: sticky;
+    top: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 775px) {
     section {
         padding: 2rem;
+        /* width: 100vw; */
     }
-
+    
     .home .content h3 {
         font-size: 3rem;
+    }
+
+    .home .content {
+        margin-top: 120px;
+    }
+
+    .home .content p {
+        font-size: .8rem;
+        line-height: 1.5;
+        padding: .5rem 0;
+    }
+    
+    .heading {
+        font-size: 2.5rem;
+    }
+    
+    .about .box_container {
+        flex-direction: column;
+    }
+    
+    footer {
+        font-size: .8rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .box {
+        width: 250px;
+    }
+
+    .heading, 
+    .sports .row .content h3,
+    .tournament .row .content h3{
+        font-size: 1.5rem;
+    }
+
+    footer {
+        font-size: .5rem;
     }
 }
