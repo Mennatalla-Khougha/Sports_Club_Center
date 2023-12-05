@@ -73,7 +73,10 @@
     align-items: center;
     margin: 0 0 10px 0;
   }
-  .info .text {
+  .text .name {
+    text-align: center;
+  }
+  .text {
     padding: 0 10px;
   }
   .text p {

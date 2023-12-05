@@ -60,12 +60,13 @@ for i in range(3):
         else:
             age_range = "23-35"
         win_value = random.choice([0, 3, 3, 3, 5, 5])
-        tournaments[i].append(Tournament(name=tournament_name, sport_id=sports[i].id, date=date, age_range=age_range, win_value=win_value))
+        description = fake.paragraph(nb_sentences=3) 
+        tournaments[i].append(Tournament(name=tournament_name, sport_id=sports[i].id, date=date, age_range=age_range, win_value=win_value, description=description))
         for player in sports[i].players:
             if random.randint(1, 3) > 1:
                 player.join_tournament(tournaments[i][j])
-        if (date < "2023-12-02" and len(tournaments[i][j].players) != 0):
-            tournaments[i][j].initial_records()
+        tournaments[i][j].initial_records()
+        if (date < "2023-12-06" and len(tournaments[i][j].players) != 0):
             for player in tournaments[i][j].players:
                 for k in range(random.randint(1, 12)):
                     tournaments[i][j].update_records(player.id, random.choice([True, False]))

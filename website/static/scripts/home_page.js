@@ -22,10 +22,10 @@ fetch(api)
     }
     console.log(event);
     let text = `<article class="info_event">`;
-    text += `<img src="../static/tournaments_images/${event.id}.png" onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'" alt="${event.name}" />`;
+    text += `<img src="../static/tournaments_images/${event.id}.png" onerror="this.onerror=null; this.src='../static/tournaments_images/${event.sport}.png'" alt="${event.name}" />`;
     text += `<div class="text">`;
     text += `<h2 class="name">${event.name}</h2>`;
-    if (event.discription) text += `<p>${event.discription}</p>`;
+    if (event.description) text += `<p>${event.description}</p>`;
     text += `</div>`;
     text += `</article>`;
 

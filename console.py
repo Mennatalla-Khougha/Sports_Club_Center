@@ -99,9 +99,9 @@ class ConsoleCommand(cmd.Cmd):
                 try:
                     img = Image.open(photo)
                     if isinstance(obj, Player):
-                        new_path = f"website/personal_images/{obj.id}.png"
+                        new_path = f"website/static/personal_images/{obj.id}.png"
                     else:
-                        new_path = f"website/tournaments_images/{obj.id}.png"
+                        new_path = f"website/static/tournaments_images/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
@@ -177,9 +177,9 @@ class ConsoleCommand(cmd.Cmd):
                 try:
                     img = Image.open(value)
                     if args[0] == "Player":
-                        new_path = f"website/personal_images/{obj.id}.png"
+                        new_path = f"website/static/personal_images/{obj.id}.png"
                     else:
-                        new_path = f"website/tournaments_images/{obj.id}.png"
+                        new_path = f"website/static/tournaments_images/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)

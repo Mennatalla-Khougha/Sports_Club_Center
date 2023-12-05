@@ -36,11 +36,13 @@ def player_page(player_id):
     player = storage.get(Player, player_id)
     if not player:
         abort(404)
-    stats = player.records()
+    stats = player.stats()
+    records = sorted(player.records, key=lambda k: (-k.score, k.matches_played))
     age = player.age(datetime.now())
     return render_template('player_page.html',
                            player=player,
                            stats=stats,
+                           records=records,
                            age=age)
 
 
@@ -77,11 +79,25 @@ def tournaments():
     """ routes the tournaments page """
     sports = storage.all(Sport).values()
     sports = sorted(sports, key=lambda k: k.name)
-
     return render_template('tournaments.html', sports=sports)
+
+
+@app.route('/tournaments/<tournament_id>', strict_slashes=False)
+def tournament_page(tournament_id):
+    """ routes the tournament_page page """
+    tournament = storage.get(Tournament, tournament_id)
+    if not tournament:
+        abort(404)
+    date = datetime.strptime(tournament.date, '%Y-%m-%d %H:%M')
+    held = date < datetime.now()
+    records = sorted(tournament.records, key=lambda k: (-k.score, k.matches_played))
+    return render_template('tournament_page.html',
+                           tournament=tournament,
+                           records=records,
+                           held=held)
 
 if __name__ == "__main__":
     """ Main Function """
-    host = getenv('HBNB_API_HOST', '0.0.0.0')
-    port = getenv('HBNB_API_PORT', 5000)
+    host = getenv('API_HOST', '0.0.0.0')
+    port = getenv('API_PORT', 5000)
     app.run(host=host, port=port)

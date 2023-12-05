@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block links %}
+<link rel="stylesheet" href="../static/styles/tournament_page.css" />
+{% endblock %} {% block content %}
+<div class="container">
+  <h2>{{ tournament.name }}</h2>
+  <div class="image_info">
+    <img
+      src="../static/tournaments_images/{{ tournament.id }}.png"
+      onerror="this.onerror=null; this.src='../static/tournaments_images/{{ tournament.sport.name }}.png'"
+      alt="{{ tournament.sport.name }} Tournament"
+    />
+    <div class="info">
+      <ul>
+        <li>Date: {{ tournament.date }}</li>
+        <li>Age range: {{ tournament.age_range }}</li>
+        <li>Win value: {{ tournament.win_value }}</li>
+        {% if held == True %}
+        <li>
+          Players from our club
+          <div class="grid-container">
+            <div class="grid_item">
+              <p>name</p>
+              <p>score</p>
+              <p>won</p>
+              <p>lost</p>
+            </div>
+            {% for record in records %}
+            <div class="grid_item">
+              <a href="/players/{{ record.player.id }}">
+                <h3>
+                  {{ record.player.first_name }} {{ record.player.last_name }}
+                </h3>
+              </a>
+              <p>{{ record.score }}</p>
+              <p>{{ record.matches_won }}</p>
+              <p>{{ record.matches_lost }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  {% if tournament.description is not none %}
+  <p class="description">{{ tournament.description }}</p>
+  {% endif %}
+</div>
+{% endblock %}

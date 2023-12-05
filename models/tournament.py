@@ -17,10 +17,8 @@ class Tournament(BaseModel, Base):
     name = Column(String(50), nullable=False)
     date = Column(String(20), nullable=False)
     age_range = Column(String(20), nullable=False)
-    discription = Column(String(200), nullable=True)
+    description = Column(String(200), nullable=True)
     win_value = Column(Integer, default=0)
-    # draw_value = Column(Integer, default=0)
-    loss_value = Column(Integer, default=0)
     records = relationship("Record", backref="tournament",
                            cascade="all, delete")
     players = relationship(
@@ -28,7 +26,6 @@ class Tournament(BaseModel, Base):
         secondary=players_tournaments,
         back_populates='tournaments'
         )
-    sport = relationship('Sport', back_populates='tournaments')
 
     def __init__(self, *args, **kwargs):
         """initializes tournament"""
