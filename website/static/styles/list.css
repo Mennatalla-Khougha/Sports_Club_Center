@@ -26,8 +26,8 @@ option {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr; /* One column */
-  grid-gap: 10px; /* Gap between items */
+  grid-template-columns: 1fr;
+  grid-gap: 10px; 
   margin: 0 50px;
   border: 1px solid azure;
   border-radius: 20px;

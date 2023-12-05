@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block links %}
+<link rel="stylesheet" href="../static/styles/list.css" />
 <link rel="stylesheet" href="../static/styles/schedules.css" />
 <script src="../static/scripts/schedules.js" defer></script>
 {% endblock %}
@@ -9,6 +10,16 @@
 <div class="container">
   <div class="buttons">
     <button id="prev">Prev</button>
+    <div class="filters">
+      <img src="../static/images/filter_list.png" alt="filter_list">
+      <h2>Filters</h2>
+      <select id="sport" name="sport">
+        <option value="All">All</option>
+        <option value="karate" class="karate">karate</option>
+        <option value="squash" class="squash">Squash</option>
+        <option value="Track" class="track">Track & Field</option>
+      </select>
+    </div>
     <button id="next">Next</button>
   </div>
   <div class="calender">

@@ -7,9 +7,10 @@
 }
 
 .buttons {
+  margin-top:20px;
   display: flex;
   justify-content: space-between;
-  width: 450px;
+  width: 70%;
 }
 
 #prev,
@@ -28,8 +29,8 @@
 .calender {
   background-color: #000000;
   color: #d3d3d3;
-  width: 450px;
-  height: 520px;
+  width: 75%;
+  min-height: 520px;
   border-radius: 10px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
@@ -57,15 +58,16 @@
 
 .weekdays {
   width: 100%;
-  height: 50px;
+  height: 100px;
   display: flex;
+  gap: 7px;
 }
 
 .weekdays div {
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 1px;
-  width: 100%;
+  width: calc(100% / 7.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,8 +83,8 @@
 .days div {
   font-size: 14px;
   margin: 3px;
-  width: 57.5px;
-  height: 50px;
+  width: calc(100% / 7.3);
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,4 +97,42 @@
 
 .today {
   background-color: lightseagreen;
+}
+
+.karate {
+  background-color: #ff6347;
+}
+
+.squash {
+  background-color: #90ee90; 
+}
+
+.track {
+  background-color: #8087f0;
+}
+
+@media screen and (max-width: 1300px) {
+  .buttons {
+    width: 450px;
+  }
+  
+  .calender {
+    width: 450px;
+    height: 520px;
+  }
+  
+  .weekdays {
+    width: 100%;
+    height: 50px;
+  }
+  
+  .weekdays div {
+    width: 100%;
+  }
+  
+  .days div {
+    width: 57.5px;
+    height: 50px;
+  }
+  
 }

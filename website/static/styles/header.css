@@ -59,7 +59,15 @@ header ul {
 
 .options a {
   text-decoration: none;
+  text-transform: capitalize;
 }
+
+/* .player a:hover, .sports a:hover, 
+.schedules a:hover, .tournaments a:hover {
+  color: #768aa7;
+  border-bottom: .1rem solid #768aa7;
+  padding-bottom: .5rem;
+} */
 
 .hamburger-menu {
   display: none;
