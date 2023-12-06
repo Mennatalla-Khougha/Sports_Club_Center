@@ -43,9 +43,12 @@ header h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+}
+
+.options h3 {
   border-left: 2px white solid;
   padding: 0 20px;
-  margin: 0;
 }
 
 header h3 {
@@ -106,7 +109,7 @@ header ul {
   width: 100%;
   height: 100%;
   left: 0;
-  top: 105px;
+  top: 110px;
   flex-direction: column;
   background-color: #1c252f;
 }
@@ -114,7 +117,7 @@ header ul {
 .options.show .players {
   margin-top: 65px;
 }
-.options.show div {
+.options.show h3 {
   padding: 20px 0;
   border: none;
 }
@@ -125,4 +128,8 @@ header ul {
 
 body.menu-open {
   overflow: hidden;
+}
+
+.options.show .sports {
+  height: auto;
 }

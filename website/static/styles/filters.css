@@ -1,26 +1,27 @@
+.sports {
+  height: 100%;
+}
 .popover {
-  /* display: none; */
   position: absolute;
   list-style-type: none;
   background-color: #171e26;
   padding: 10px;
-  top: 135%;
-  left: 0;
+  top: 100%;
+  visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.25s linear;
-}
-
-.sports {
-  position: relative;
-}
-
-.sports:hover .popover,
-.popover:hover {
-  display: block;
-  opacity: 1;
 }
 
 .popover a {
   text-decoration: none;
   color: azure;
+}
+
+.popover a li {
+  margin-bottom: 10px;
+}
+
+.sports:hover > .popover {
+  visibility: visible;
+  opacity: 1;
 }
