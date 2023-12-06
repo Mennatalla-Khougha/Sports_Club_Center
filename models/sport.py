@@ -11,8 +11,7 @@ class Sport(BaseModel, Base):
     name = Column(String(50), nullable=False)
     tournaments = relationship("Tournament", backref="sport",
                                cascade="all, delete")
-    players = relationship("Player",
-                           back_populates="sport",
+    players = relationship("Player", backref="sport",
                            cascade="all, delete")
 
     def __init__(self, *args, **kwargs):

@@ -21,7 +21,8 @@ class Player(BaseModel, Base):
     height = Column(Float, nullable=True)
     address = Column(String(200), nullable=True)
     phone_number = Column(String(50), nullable=True)
-    sport = relationship('Sport', back_populates='players')
+    records = relationship("Record", backref="player",
+                           cascade="all, delete")
     tournaments = relationship(
         'Tournament',
         secondary=players_tournaments,
@@ -36,22 +37,18 @@ class Player(BaseModel, Base):
             kwargs["birth_day"] = None
         super().__init__(*args, **kwargs)
 
-    def records(self):
+    def stats(self):
         """The player records in all compitions"""
-        stats = [0, 0, 0]
-        for tournament in self.tournaments:
-            for record in tournament.records:
-                if record.player_id == self.id:
-                    stats[0] += record.score
-                    stats[1] += record.matches_won
-                    stats[2] += record.matches_lost
-                    break
-        return stats
+        myStats = [0, 0, 0]
+        for record in self.records:
+            myStats[0] += record.score
+            myStats[1] += record.matches_won
+            myStats[2] += record.matches_lost
+        return myStats
 
     def age(self, date):
         """The age of the player"""
         birth_day = datetime.strptime(self.birth_day, "%Y-%m-%d")
-        # tournament_date = datetime.strptime(tournament.date, "%Y-%m-%d %H:%M")
         player_age = date.year - birth_day.year
         
         if birth_day.month > date.month:
@@ -63,7 +60,7 @@ class Player(BaseModel, Base):
 
     def _can_join(self, tournament):
         if self.sport_id != tournament.sport_id:
-            print(f"this player doesn't play {models.storage.get('Sport', tournament.sport_id).name}")
+            print(f"this player doesn't play {tournament.sport.name}")
             return False
         tournament_date = datetime.strptime(tournament.date, "%Y-%m-%d %H:%M")
         age = self.age(tournament_date)
@@ -78,16 +75,16 @@ class Player(BaseModel, Base):
             self.tournaments.append(tournament)
 
     def played_tournaments(self):
-        count = 0
+        tournaments = []
         date = datetime.now().strftime("%Y-%m-%d")
         for tournament in self.tournaments:
             if tournament.date < date:
-                count += 1
-        return count
+                tournaments.append(tournament)
+        return tournaments
 
     def to_dict(self):
         myDict = super().to_dict()
-        myDict["played_tournaments"] = self.played_tournaments()
+        myDict["played_tournaments"] = len(self.played_tournaments())
         myDict["age"] = self.age(datetime.now())
         myDict["sport"] = self.sport.name
         return myDict

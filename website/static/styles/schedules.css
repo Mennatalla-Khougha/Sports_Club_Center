@@ -1,97 +1,159 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
+.day p {
+  margin: 0;
+}
+
+.day .circle-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  bottom: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.day .circle {
+  width: 15%;
+  height: 10%;
+  border-radius: 500px;
+  background-color: red;
+}
+
+.filters {
+  margin-top: 30px;
+  z-index: 5;
+}
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 450px;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-top: -85px;
 }
 
-#prev, #next {
-    background-color: lightseagreen;
-    border: none;
-    border-radius: 5px;
-    color: #d3d3d3;
-    font-size: 22px;
-    padding: 5px;
-    width:100px;
-    height: 50px;
-    margin: 10px;
+#prev,
+#next {
+  background-color: lightseagreen;
+  border: none;
+  border-radius: 5px;
+  color: #d3d3d3;
+  font-size: 22px;
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  margin: 10px;
 }
 
 .calender {
-    background-color: #000000;
-    color: #d3d3d3;
-    width: 450px;
-    height: 520px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: #d3d3d3;
+  width: 75vw;
+  min-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .month {
-    width: 100%;
-    height: 120px;
-    background-color: lightseagreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px 10px 0 0 ;
+  width: 100%;
+  height: 120px;
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
 }
 
 .month h1 {
-    font-size: 30px;
-    font-weight: 400;
-    text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .month p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .weekdays {
-    width: 100%;
-    height: 50px;
-    display: flex;
+  width: 100%;
+  display: flex;
+  margin: 30px 0 10px 0;
 }
 
 .weekdays div {
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .days {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
 }
 
-.days div {
-    font-size: 14px;
-    margin: 3px;
-    width: 57.5px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.days .day,
+.days .empty {
+  font-size: 14px;
+  width: calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.days div:hover:not(.empty) {
-    border: 2px solid #808080;
-    cursor: pointer;
+.days .day {
+  box-shadow: inset 0 0 0 0.3px #808080;
+  border-radius: 10px;
+}
+
+.days .day:hover {
+  box-shadow: inset 0 0 0 2px #808080;
+  cursor: pointer;
 }
 
 .today {
-    background-color: lightseagreen;
+  background-color: lightseagreen;
+}
+
+.karate {
+  background-color: #ff6347;
+}
+
+.squash {
+  background-color: #90ee90;
+}
+
+.track {
+  background-color: #8087f0;
+}
+
+@media (max-width: 600px) {
+  .calender {
+    width: 100vw;
+    border-radius: 0;
+  }
+  .month {
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .buttons {
+    margin-top: 0px;
+  }
 }

@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="../static/styles/footer.css" />
     <link rel="stylesheet" href="../static/styles/filters.css" />
     {% block links %}
-        {# more links #}
+      {# more links #}
     {% endblock %}
+    <script src="../static/scripts/header.js" defer></script>
     <link rel="icon" href="../static/images/ic_on.png" />
   </head>
   <body>
@@ -18,13 +19,12 @@
       <section class="options">
         <div class="players">
           <a href="/players">
-            <h3>players</h3>
+            <h3>Players</h3>
           </a>
-          <ul class="list"></ul>
         </div>
         <div class="sports">
           <a href="/sports">
-            <h3>sports</h3>
+            <h3>Sports</h3>
           </a>
           <ul class="popover">
             <a href="/sports/squash">
@@ -40,18 +40,27 @@
         </div>
         <div class="schedules">
           <a href="/schedules">
-            <h3>schedules</h3>
+            <h3>Schedules</h3>
           </a>
-          <ul class="list"></ul>
+        </div>
+        <div class="tournaments">
+          <a href="/tournaments">
+            <h3>Tournaments</h3>
+          </a>
         </div>
       </section>
       <a href="/">
         <img src="../static/images/logo.png" alt="club logo" />
       </a>
       <h1>Champions Sports Club</h1>
+      <div class="hamburger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </header>
     {% block content %}
-        {# the page content #}
+      {# the page content #}
     {% endblock %}
     <footer>Sports Club Center &copy; 2023</footer>
   </body>

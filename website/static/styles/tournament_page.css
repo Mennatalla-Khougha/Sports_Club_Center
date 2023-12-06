@@ -1,4 +1,24 @@
-.image_stats {
+h2 {
+    margin-top: 40px;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.description {
+    font-size: 16px;
+    width: 100%;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.grid_item a {
+  text-decoration: none;
+  color: azure;
+}
+
+.image_info {
   margin: 10px 50px;
   flex: 1;
   display: flex;
@@ -9,7 +29,7 @@
   align-items: center;
 }
 
-.image_stats img {
+.image_info img {
   margin: 20px;
   max-width: 500px;
   width: 100%;
@@ -20,30 +40,12 @@ li {
   font-size: 20px;
 }
 
-.grid_item a {
-  text-decoration: none;
-  color: azure;
-}
-
-.short_info {
-  max-width: 700px;
-  font-size: 20px;
-  margin-bottom: 50px;
-  padding: 0px 20px;
-}
-
 .data {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-}
-
-.data button {
-  width: 200px;
-  height: 80px;
-  font-size: 25px;
 }
 
 .data ul {

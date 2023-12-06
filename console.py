@@ -93,12 +93,15 @@ class ConsoleCommand(cmd.Cmd):
             print("** some attrebute(s) are missing or invalid **")
             storage.rollback()
             return
-        if isinstance(obj, Player):
+        if isinstance(obj, Player) or  isinstance(obj, Tournament):
             photo = input("Enter the path of the photo or (n) for no photo: ")
             if photo != "n":
                 try:
                     img = Image.open(photo)
-                    new_path = f"website/personal_images/{obj.id}.png"
+                    if isinstance(obj, Player):
+                        new_path = f"website/static/personal_images/{obj.id}.png"
+                    else:
+                        new_path = f"website/static/tournaments_images/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
@@ -170,10 +173,13 @@ class ConsoleCommand(cmd.Cmd):
             print("** Invalid JSON format. **")
             return
         for key, value in data.items():
-            if key == "photo" and args[0] == "Player":
+            if key == "photo" and args[0] in ("Player", "Tournament"):
                 try:
                     img = Image.open(value)
-                    new_path = f"website/personal_images/{obj.id}.png"
+                    if args[0] == "Player":
+                        new_path = f"website/static/personal_images/{obj.id}.png"
+                    else:
+                        new_path = f"website/static/tournaments_images/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
@@ -239,8 +245,8 @@ class ConsoleCommand(cmd.Cmd):
 
     def do_append(self, arg):
         """
-        Add player to tournment or sport.
-        Usage: <player id> <class name> <id>
+        Add player to a tournment.
+        Usage: append <player id> <tournment id>
         """
         if not arg:
             print("** player id missing **")
@@ -251,26 +257,15 @@ class ConsoleCommand(cmd.Cmd):
             print("** no Player instance found **")
 
         if len(args) < 2:
-            print("** class name missing **")
-            return
-
-        if args[1] not in ("Sport", "Tournament"):
-            print("** not a valid class **")
-            return
-
-        if len(args) < 3:
             print("** id missing **")
             return
 
-        obj = storage.get(args[1], args[2])
+        obj = storage.get("Tournment", args[1])
         if not obj:
-            print(f"** no {args[1]} instance found **")
+            print(f"** no Tournment instance found **")
             return
 
-        if args[1] == "Tournament":
-            player.join_tournament(obj)
-        else:
-            player.sports.append(obj)
+        player.join_tournament(obj)
         storage.save()
 
 

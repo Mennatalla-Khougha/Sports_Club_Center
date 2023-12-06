@@ -43,9 +43,12 @@ header h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+}
+
+.options h3 {
   border-left: 2px white solid;
   padding: 0 20px;
-  margin: 0;
 }
 
 header h3 {
@@ -57,6 +60,76 @@ header ul {
   margin: 0;
 }
 
-.options a{
+.options a {
   text-decoration: none;
+  text-transform: capitalize;
+}
+
+/* .player a:hover, .sports a:hover, 
+.schedules a:hover, .tournaments a:hover {
+  color: #768aa7;
+  border-bottom: .1rem solid #768aa7;
+  padding-bottom: .5rem;
+} */
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  position: fixed;
+  top: 50px;
+  right: 40px;
+}
+
+.hamburger-menu div {
+  width: 35px;
+  height: 4px;
+  background-color: azure;
+  border-radius: 2px;
+}
+
+@media (max-width: 800px) {
+  header h1 {
+    display: none;
+  }
+  header .options {
+    display: none;
+  }
+  header .hamburger-menu {
+    display: flex;
+  }
+}
+
+.options.show {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 110px;
+  flex-direction: column;
+  background-color: #1c252f;
+}
+
+.options.show .players {
+  margin-top: 65px;
+}
+.options.show h3 {
+  padding: 20px 0;
+  border: none;
+}
+
+.options.show .sports ul {
+  display: none;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.options.show .sports {
+  height: auto;
 }

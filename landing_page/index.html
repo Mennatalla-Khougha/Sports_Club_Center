@@ -1,23 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style rel="stylesheet", href="style.css"></style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="body.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.7.3/src/app/ci.min.css"
+    />
+    <link rel="icon" href="../website/static/images/ic_on.png" />
     <title>SCC Landing page</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header">
-        <a href="../website/templates/index.html">
-            <img src="../website/static/images/logo.png" alt="logo" id="logo">
-        </a>
-        <nav class="navbar">
-            <a href="#Home">Home</a>
-            <a href="#About">About</a>
-            <a href="#Sports">Sport</a>
-            <a href="#tournament">Tournament</a>
-            <a href="#mission">Mission</a>
-        </nav>
+      <a href="/">
+        <img src="../website/static/images/ic_on.png" alt="logo" id="logo" />
+      </a>
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#sports">Sports</a>
+        <a href="#tournament">Tournaments</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="hamburger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </header>
-</body>
+    <section class="home" id="home">
+      <div class="content">
+        <h3>Sports Club Center</h3>
+        <p>
+          SCC provides a unique platform for athletes to hone their skills,
+          compete at the highest levels, and forge their own paths to success.
+        </p>
+      </div>
+    </section>
+    <section class="sports" id="sports">
+      <div class="row">
+        <div class="img">
+          <img src="images/Squash.jpg" alt="Squash player" />
+        </div>
+        <div class="content">
+          <h3>Our Sports</h3>
+          <p>
+            SCC is the place where individual achievements take center
+            stage.With focus on individual sports.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="tournament" id="tournament">
+      <div class="row">
+        <div class="content">
+          <h3>Tournament</h3>
+          <p>
+            We host a variety of events, championships, and exhibitions that
+            showcase the incredible talent within our club. Whether you're an
+            aspiring Olympian or simply pursuing a personal best, SCC is there
+            for you
+          </p>
+        </div>
+        <div class="img">
+          <img src="images/Karate_players.jpg" alt="Karate player" />
+        </div>
+      </div>
+    </section>
+    <section class="about" id="about">
+      <h1 class="heading"><span>About</span>Us</h1>
+      <div class="box_container">
+        <div class="box about_card">
+          <h3>Our story</h3>
+          <p>
+            I am a karate Coach and i experienced first hand how hard it is to
+            get information about individual sports and the lack of attention to
+            it's fans so me and my partner worked on a project that can be
+            easily adapted to any club and can be used to easily access
+            information about any individual sport and shine a spot light on
+            it's champions
+          </p>
+        </div>
+        <div class="box">
+          <img src="images/George.jpeg" alt="personal_photo" />
+          <h3>George Rafaat</h3>
+          <p>
+            Passionate SoftWare Engineer. Loves learning and taking on new
+            challenges
+          </p>
+          <div class="social_media">
+            <a href="https://github.com/5XGeorgeX5" target="_blank">
+              <i class="ci ci-github ci-2x"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/george-raafat-429047270/"
+              target="_blank"
+            >
+              <i class="ci ci-linkedin ci-2x"></i>
+            </a>
+            <a href="https://twitter.com/George_raafat1" target="_blank">
+              <i class="ci ci-x ci-2x"></i>
+            </a>
+          </div>
+        </div>
+        <div class="box">
+          <img src="images/Menna.jpg" alt="personal_photo" />
+          <h3>Mennatalla Khougha</h3>
+          <p>
+            Karate Coach, SoftWare Engineer. Loves solving problem and enjoy
+            challenges
+          </p>
+          <div class="social_media">
+            <a href="http://github.com/Mennatalla-Khougha">
+              <i class="ci ci-github ci-2x"></i>
+            </a>
+            <a href="http://www.linkedin.com/in/mennatalla-khougha-6105a720b/">
+              <i class="ci ci-linkedin ci-2x"></i>
+            </a>
+            <a href="http://twitter.com/MenmenKhougha">
+              <i class="ci ci-x ci-2x"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      Created for ALX portfolio Project &copy; George & Mennatalla
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

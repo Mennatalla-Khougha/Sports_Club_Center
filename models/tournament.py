@@ -17,10 +17,8 @@ class Tournament(BaseModel, Base):
     name = Column(String(50), nullable=False)
     date = Column(String(20), nullable=False)
     age_range = Column(String(20), nullable=False)
-    discription = Column(String(200), nullable=True)
+    description = Column(String(200), nullable=True)
     win_value = Column(Integer, default=0)
-    # draw_value = Column(Integer, default=0)
-    loss_value = Column(Integer, default=0)
     records = relationship("Record", backref="tournament",
                            cascade="all, delete")
     players = relationship(
@@ -51,16 +49,28 @@ class Tournament(BaseModel, Base):
             record.save()
 
     def update_records(self, id1, win=True):
-        for record in self.records:
-            if record.player_id == id1:
-                record.matches_played += 1
-                if win:
-                    record.matches_won += 1
-                    record.score += self.win_value
-                else:
-                    record.matches_lost += 1
-                break
+        record = self.get_record(id1)
+        if not record:
+            return
+        record.matches_played += 1
+        if win:
+            record.matches_won += 1
+            record.score += self.win_value
+        else:
+            record.matches_lost += 1
+        record.save()
 
 
     def add_player(self, player):
         player.join_tournament(self)
+
+    def to_dict(self):
+        myDict = super().to_dict()
+        myDict["sport"] = self.sport.name
+        return myDict
+
+    def get_record(self, player_id):
+        for record in self.records:
+            if record.player_id == player_id:
+                return record
+        return None

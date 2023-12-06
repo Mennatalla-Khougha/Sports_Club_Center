@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Champion Sports Club</title>
-    <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/filters.css">
-    <link rel="stylesheet" href="styles/schedules.css">
-    <link rel="icon" href="images/ic_on.png">
-    <script src="scripts/schedules.js" defer></script>
+    <link rel="stylesheet" href="../static/styles/common.css">
+    <link rel="stylesheet" href="../static/styles/header.css">
+    <link rel="stylesheet" href="../static/styles/footer.css">
+    <link rel="stylesheet" href="../static/styles/filters.css">
+    <link rel="stylesheet" href="../static/styles/schedules.css">
+    <link rel="stylesheet" href="../static/styles/list.css">
+    <link rel="icon" href="../static/images/ic_on.png">
+    <script src="../static/scripts/schedules.js" defer></script>
   </head>
   <body>
     <header>
@@ -44,13 +45,23 @@
           </div>
       </section>
       <a href="index.html">
-        <img src="images/logo.png" alt="club logo">
+        <img src="../static/images/logo.png" alt="club logo">
       </a>
       <h1>Champions Sports Club</h1>
   </header>
   <div class="container">
     <div class="buttons">
       <button id="prev">Prev</button>
+      <div class="filters">
+        <img src="../static/images/filter_list.png" alt="filter_list">
+        <h2>Filters</h2>
+        <select id="sport" name="sport">
+          <option value="All">All</option>
+          <option value="karate" class="karate">karate</option>
+          <option value="squash" class="squash">Squash</option>
+          <option value="Track" class="track">Track & Field</option>
+        </select>
+      </div>
       <button id="next">Next</button>
     </div>
     <div class="calender">
