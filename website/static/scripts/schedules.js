@@ -45,10 +45,11 @@ function updateCalender() {
       monthInx === thisMonth &&
       myDate.getFullYear() === thisYear
     ) {
-      days += `<div class= "today">${i}</div>`;
+      days += `<div class= "day today"><p>${i}</p>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div class= "day"><p>${i}</p>`;
     }
+    days += '</div>'
   }
   daysEl.innerHTML = days;
 }
