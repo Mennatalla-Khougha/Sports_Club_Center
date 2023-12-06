@@ -9,7 +9,7 @@ let monthInx = myDate.getMonth();
 const thisMonth = monthInx;
 const thisYear = myDate.getFullYear();
 
-dateEl.innerText = myDate.toDateString();
+dateEl.innerText = `today: ${myDate.toDateString()}`;
 
 function updateCalender() {
   const lastDay = new Date(myDate.getFullYear(), monthInx + 1, 0).getDate();
