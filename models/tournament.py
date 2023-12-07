@@ -17,7 +17,7 @@ class Tournament(BaseModel, Base):
     name = Column(String(50), nullable=False)
     date = Column(String(20), nullable=False)
     age_range = Column(String(20), nullable=False)
-    description = Column(String(200), nullable=True)
+    description = Column(String(500), nullable=True)
     win_value = Column(Integer, default=0)
     records = relationship("Record", backref="tournament",
                            cascade="all, delete")
