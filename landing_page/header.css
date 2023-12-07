@@ -88,6 +88,10 @@ header img {
     
     .hamburger-menu {
         display: flex;
+        /* justify-content: space-around; */
+        position: fixed;
+        top: 50px;
+        right: 50px;
     }
     
     .header {
@@ -110,6 +114,7 @@ header img {
         display: none;
         font-size: 1rem;
     }
+
     .navbar.show {
         display: flex; 
     }
