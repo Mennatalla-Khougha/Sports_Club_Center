@@ -5,6 +5,7 @@ from flask import Flask, abort, jsonify, request
 from models import storage
 from models.tournament import Tournament
 from models.sport import Sport
+from models.player import Player
 
 
 @app_views.route('/tournaments', strict_slashes=False)
@@ -30,5 +31,14 @@ def tournaments_from_sport_id(sport_id):
     sport = storage.get(Sport, sport_id)
     if sport:
         tournaments = [tournament.to_dict() for tournament in sport.tournaments]
+        return jsonify(tournaments)
+    abort(404)
+
+@app_views.route('/players/<player_id>/tournaments', strict_slashes=False)
+def tournaments_from_player_id(player_id):
+    """Retrieves the list of all tournament objects of a player"""
+    player = storage.get(Player, player_id)
+    if player:
+        tournaments = [tournament.to_dict() for tournament in player.tournaments]
         return jsonify(tournaments)
     abort(404)
