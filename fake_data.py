@@ -44,8 +44,8 @@ storage.save()
 adjectives = ['Grand', 'Elite', 'Championship', 'Classic', 'Supreme', 'Masters', 'Global']
 nouns = ['Challenge', 'Showdown', 'Cup', 'Trophy', 'Clash', 'Competition', 'Invitational']
 
-start_date = datetime.strptime('2023-07-01', '%Y-%m-%d').date()
-end_date = datetime.strptime('2024-07-01', '%Y-%m-%d').date()
+# start_date = datetime.strptime('2023-07-01', '%Y-%m-%d').date()
+# end_date = datetime.strptime('2024-07-01', '%Y-%m-%d').date()
 
 for i in range(3):
     for j in range(60):
