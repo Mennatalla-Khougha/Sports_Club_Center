@@ -1,4 +1,4 @@
-const eventEl = document.querySelector(".info_event_wraper");
+const eventEl = document.querySelector(".info.event");
 const api = `http://${window.location.hostname}:5000/api/v1/tournaments/`;
 
 fetch(api)
@@ -21,8 +21,7 @@ fetch(api)
       event = data[i - 1];
     }
     console.log(event);
-    let text = `<article class="info_event">`;
-    text += `<h2 class="name">${event.name}</h2>`;
+    let text = `<h2 class="name">${event.name}</h2>`;
     let row = `<div class="row">`
     row += `<img src="../static/tournaments_images/${event.id}.png" onerror="this.onerror=null; this.src='../static/tournaments_images/${event.sport}.png'" alt="${event.name}" />`;
     row += `<div class="text">`;
@@ -30,7 +29,6 @@ fetch(api)
     row += `</div>`;
     row += `</div>`;
     text += row
-    text += `</article>`;
 
     eventEl.innerHTML = text;
   })

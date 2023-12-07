@@ -1,32 +1,32 @@
-.info, .info_event {
+.container {
+  margin-top: 180px;
+  align-items: flex-start;
+}
+.info {
   /* margin: 10px 30px; */
   max-width: 600px;
   max-height: 370px;
- /* flex: 1;
+  /* flex: 1;
   display: flex;
   gap: 10px; */
-  padding: 0;
+  padding: 10px;
   background: #171e26;
   border-radius: 10px;
   margin-bottom: 50px;
 }
 
-.info .row,
- .info_event .row {
-  margin: 0;
-  padding: 0;
+.info .row {
+  /* margin: 0;
+  padding: 0; */
   display: flex;
-  flex-direction: row;
-  max-width: 100%;
+  /* flex-direction: row; */
+  width: 100%;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.info .row img,
-.info_event .row img {
-  flex: 1 1 auto;
-  max-width: 35%;
-  width: 200px;
+.info .row img {
+  width: 210px;
   height: 300px;
 }
 
@@ -35,31 +35,29 @@
   margin-top: 60px;
 } */
 
-.info .row .text, 
-.info_event .row .text{
-  flex: 1 1 auto;
-  max-width: 50%;
-  padding: 2rem;
-  text-align: center;
+.info .row .text {
+  flex: 1;
+  /* max-width: 50%; */
+  /* text-align: center;
   padding-bottom: 20px;
   margin-bottom: 10px;
-  margin-top: 0;
+  margin-top: 0; */
+  padding: 20px;
 }
 
-.info h2, 
-.info_event h2 {
+.info h2 {
   font-size: 2rem;
   color: #5640a6e1;
   text-align: center;
   margin: 0;
-  padding-top: 20px;
+  padding: 10px 0;
 }
 
-.info .row .text p, 
-.info_event .row .text p {
-  font-size: .8rem;
+.info .row .text p {
+  font-size: 0.8rem;
   /* padding: 1rem 0;
   line-height: 1.8; */
+  margin: 0;
 }
 
 /* .info img {
@@ -84,21 +82,21 @@
   height: 300px;
 }
 
-.info_event_wraper {
+/* .info_event_wraper {
   width: 100%;
-}
+} */
 
-.info_event {
+/* .info_event {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* max-width: 500px; */
-  /* margin: 10px auto 10px 5%; */
-  /* max-width: 700px; */
-  /* margin-right: auto; */
+  max-width: 500px;
+  margin: 10px auto 10px 5%;
+  max-width: 700px;
+  margin-right: auto;
   margin-top: -150px;
   margin-left: 190px;
-}
+} */
 
 /*.info_event img {
   width: 300px;
@@ -113,19 +111,18 @@
   .sports_photo {
     width: 96.3%;
   }
-  .info_event {
+  /* .info_event {
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
-  }
-  .info_event_wraper {
+  } */
+  /* .info_event_wraper {
     max-width: 700px;
-  }
+  } */
 }
 
-
 @media (max-width: 650px) {
-  .info, .info_event {
+  .info {
     flex-direction: column;
     align-items: center;
     /* margin: 0 0 10px 0; */
@@ -134,20 +131,17 @@
     margin-left: 0;
     /* margin-bottom: 50px; */
   }
-  
-  .info .row, 
-  .info_event .row {
+
+  .info .row {
     flex-direction: column;
   }
 
-  .info .row img, 
-  .info_event .row img {
+  .info .row img {
     margin-top: 20px;
     max-width: none;
   }
 
-  .info .row .text, 
-  .info_event .row .text {
+  .info .row .text {
     max-width: none;
   }
 
