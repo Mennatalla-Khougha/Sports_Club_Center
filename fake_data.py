@@ -48,9 +48,9 @@ start_date = datetime.strptime('2023-07-01', '%Y-%m-%d').date()
 end_date = datetime.strptime('2024-07-01', '%Y-%m-%d').date()
 
 for i in range(3):
-    for j in range(30):
+    for j in range(60):
         tournament_name = f"{random.choice(adjectives)} {random.choice(nouns)} {sports[i].name}"
-        date = fake.date_time_between(start_date='-600d', end_date='+30d')
+        date = fake.date_time_between(start_date='-300d', end_date='+60d')
         date = date.strftime('%Y-%m-%d %H:%M')
         start = random.randint(5, 30)
         if start < 18:
@@ -60,15 +60,15 @@ for i in range(3):
         else:
             age_range = "23-35"
         win_value = random.choice([0, 3, 3, 3, 5, 5])
-        description = fake.paragraph(nb_sentences=3) 
+        description = fake.paragraph(nb_sentences=5) 
         tournaments[i].append(Tournament(name=tournament_name, sport_id=sports[i].id, date=date, age_range=age_range, win_value=win_value, description=description))
         for player in sports[i].players:
             if random.randint(1, 3) > 1:
                 player.join_tournament(tournaments[i][j])
         tournaments[i][j].initial_records()
-        if (date < "2023-12-06" and len(tournaments[i][j].players) != 0):
+        if (date < "2023-12-08"):
             for player in tournaments[i][j].players:
-                for k in range(random.randint(1, 12)):
+                for k in range(random.randint(3, 12)):
                     tournaments[i][j].update_records(player.id, random.choice([True, False]))
 
 storage.save()
