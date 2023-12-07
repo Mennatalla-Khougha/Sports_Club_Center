@@ -56,9 +56,9 @@ class ConsoleCommand(cmd.Cmd):
         print()
         return True
 
-    def empty_line(self):
+    def emptyline(self):
         """Do nothing upon reciving an empty line"""
-        pass
+        return
 
     def do_help(self, arg):
         """
