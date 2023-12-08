@@ -59,6 +59,14 @@ The project provides an interface for their favorite club, giving them the abili
 
 ![Schedules Page](Website_images/schedules_page.png)
 
+### Tournaments Page:
+
+![Tournaments Page](Website_images/tournaments_page.png)
+
+### a Tournament Page (template for all Tournaments):
+
+![a Tournament Page](Website_images/a_tournament_page.png)
+
 ## Console
 
 The main way to manage and insert data in the DataBase
