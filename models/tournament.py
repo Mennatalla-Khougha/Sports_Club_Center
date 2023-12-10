@@ -44,11 +44,13 @@ class Tournament(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     def initial_records(self):
+        """Initialize the records for all players in the beginning of the tournament"""
         for player in self.players:
             record = Record(tournament_id=self.id, player_id=player.id)
             record.save()
 
     def update_records(self, id1, win=True):
+        """Add the played matches record"""
         record = self.get_record(id1)
         if not record:
             return
@@ -62,14 +64,17 @@ class Tournament(BaseModel, Base):
 
 
     def add_player(self, player):
+        """add a player to the tournament"""
         player.join_tournament(self)
 
     def to_dict(self):
+        """Json representation of the tournament"""
         myDict = super().to_dict()
         myDict["sport"] = self.sport.name
         return myDict
 
     def get_record(self, player_id):
+        """Get the records of a player in this tournament"""
         for record in self.records:
             if record.player_id == player_id:
                 return record

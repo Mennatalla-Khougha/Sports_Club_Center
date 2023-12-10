@@ -4,8 +4,8 @@
 <div class="container">
   <div class="image_stats">
     <img
-      src="../static/personal_images/{{ player.id }}.png"
-      onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'"
+      src="../static/images/personal/{{ player.id }}.png"
+      onerror="this.onerror=null; this.src='../static/images/personal/no_pic.png'"
       alt="{{ player.sport.name }} Players"
     />
     <div class="stats">
@@ -46,7 +46,6 @@
       <li>Age: {{ age }}</li>
       <li>Weight: {{ player.weight }}</li>
       <li>Height: {{ player.height }}</li>
-      <!-- <li>ِAchevments: None</li> -->
     </ul>
     <a href="/schedules?id={{ player.id }}"><button>schedules</button></a>
   </div>

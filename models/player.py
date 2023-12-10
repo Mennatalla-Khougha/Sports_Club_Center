@@ -38,7 +38,7 @@ class Player(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     def stats(self):
-        """The player records in all compitions"""
+        """The player records in all competitions"""
         myStats = [0, 0, 0]
         for record in self.records:
             myStats[0] += record.score
@@ -59,6 +59,7 @@ class Player(BaseModel, Base):
         return player_age
 
     def _can_join(self, tournament):
+        """Checks of the player is eligable to join a tournament"""
         if self.sport_id != tournament.sport_id:
             print(f"this player doesn't play {tournament.sport.name}")
             return False
@@ -71,10 +72,12 @@ class Player(BaseModel, Base):
         return False
 
     def join_tournament(self, tournament):
+        """Joins a tournament"""
         if (self._can_join(tournament)):
             self.tournaments.append(tournament)
 
     def played_tournaments(self):
+        """The tournament already played"""
         tournaments = []
         date = datetime.now().strftime("%Y-%m-%d")
         for tournament in self.tournaments:
@@ -83,6 +86,7 @@ class Player(BaseModel, Base):
         return tournaments
 
     def to_dict(self):
+        """Json representation of the player"""
         myDict = super().to_dict()
         myDict["played_tournaments"] = len(self.played_tournaments())
         myDict["age"] = self.age(datetime.now())

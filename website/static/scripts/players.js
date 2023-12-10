@@ -17,7 +17,7 @@ fetch(api)
       let text = `<div class="grid_item">`;
       text += `<a href="/players/${player.id}"><h2>${player.first_name} ${player.last_name}</h2></a>`;
       text += `<p>${player.age} years old ${player.sport} player, participated in ${player.played_tournaments} tournaments.</p>`;
-      text += `<img src="../static/personal_images/${player.id}.png" onerror="this.onerror=null; this.src='../static/personal_images/no_pic.png'" alt="${player.sport} player" />`;
+      text += `<img src="../static/images/personal/${player.id}.png" onerror="this.onerror=null; this.src='../static/images/personal/no_pic.png'" alt="${player.sport} player" />`;
       text += `</div>`;
       playersHTML["All"] += text;
       if (playersHTML[player.sport_id] !== undefined) {

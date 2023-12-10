@@ -18,7 +18,7 @@ fetch(api)
       text += `<a href="/tournaments/${tournament.id}"><h2>${tournament.name}</h2></a>`;
       text += `<p>A ${tournament.sport} tournament, for age range: ${tournament.age_range}<br>`;
       text += `Date: ${tournament.date}</p>`;
-      text += `<img src="../static/tournaments_images/${tournament.id}.png" onerror="this.onerror=null; this.src='../static/tournaments_images/${tournament.sport}.png'" alt="${tournament.sport} Tournament" />`;
+      text += `<img src="../static/images/tournaments/${tournament.id}.png" onerror="this.onerror=null; this.src='../static/images/tournaments/${tournament.sport}.png'" alt="${tournament.sport} Tournament" />`;
       text += `</div>`;
       tournamentsHTML["All"] += text;
       if (tournamentsHTML[tournament.sport_id] !== undefined) {
