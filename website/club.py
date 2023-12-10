@@ -7,12 +7,15 @@ from models.player import Player
 from models.sport import Sport
 from models.tournament import Tournament
 from models.record import Record
-from flask import Flask, render_template, abort, request, redirect, url_for
-from flask_security import login_required, current_user
+from flask import Flask, render_template, abort, request, redirect, url_for, flash
+from flask_security import login_required, current_user, login_user, LoginForm
 from datetime import datetime
 from website.user_table import user_datastore, app, db, Role
-from flask_security.utils import hash_password
+from flask_security.utils import hash_password, verify_password
 from datetime import datetime
+from console import ConsoleCommand
+# from website.web_flasks.form import ExtendedLoginForm
+
 # app = Flask(__name__)
 
 
@@ -82,36 +85,145 @@ def schedules():
     """ routes the schedules page """
     return render_template('schedules.html')
 
-@app.route('/register', methods=['POST','GET'],strict_slashes=False)
-def register():
-    """routes the register page"""
-    if request.method == 'POST':
-        user_role = Role.query.filter_by(name='user').first()
-        roles = []
-        if user_role:
-            roles.append(user_role)
-        if current_user.is_authenticated and current_user.has_role('admin'):
-            role_name = request.form.get('roles')
-            role = Role.query.filter_by(name=role_name).first()
-            if role:
-                roles.append(role)
-        user_datastore.create_user(
-            email=request.form.get('email'),
-            password=hash_password(request.form.get('password')),
-            confirmed_at=datetime.utcnow(),
-            roles=roles
-        )
-        db.session.commit()
+# @app.route('/register', methods=['POST','GET'],strict_slashes=False)
+# def register():
+#     """routes the register page"""
+#     if request.method == 'POST':
+#         user_role = Role.query.filter_by(name='user').first()
+#         roles = []
+#         if user_role:
+#             roles.append(user_role)
+#         if current_user.is_authenticated and current_user.has_role('admin'):
+#             role_name = request.form.get('roles')
+#             role = Role.query.filter_by(name=role_name).first()
+#             if role:
+#                 roles.append(role)
+#         user_datastore.create_user(
+#             email=request.form.get('email'),
+#             password=hash_password(request.form.get('password')),
+#             confirmed_at=datetime.utcnow(),
+#             roles=roles
+#         )
+#         db.session.commit()
         
+#         return redirect(url_for('profile'))
+
+#     return render_template('register.html')
+
+@app.route('/log_in',methods=['POST','GET'], strict_slashes=False)
+def login():
+    """Handle login and redirect to profile page"""
+    form = LoginForm()
+    if current_user.is_authenticated:
         return redirect(url_for('profile'))
 
-    return render_template('register.html')
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        user = user_datastore.find_user(email=email)
+        if user and verify_password(password, user.password):
+            login_user(user)
+            return redirect(url_for('profile'))
+        else:
+            flash('Invalid email or password')
+    return render_template('login.html', form=form)
+        
 
-@app.route('/profile')
-@login_required
+@app.route('/profile', strict_slashes=False)
 def profile():
     """routes the profile page"""
-    return render_template('profile.html')
+    console_commands = ['create', 'show', 'destroy', 'update', 'all', 'count', 'append', 'help']  # Add all your console commands here
+    return render_template('profile.html', console_commands=console_commands)
+
+@app.route('/admin/create', methods=['POST', 'GET'], strict_slashes=False)
+def admin_create():
+    classes = {
+        'Player': ['first_name', 'last_name', 'gender', 'birth_day', 'weight', 'height', 'address', 'phone_number'],
+        'Tournament': ['name', 'date', 'age_range', 'description', 'win_value'],
+        'Sport': ['name']
+        }
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', classes=classes)
+    return render_template('create.html')
+
+@app.route('/admin/show', methods=['POST', 'GET'])
+def admin_show():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/destroy', methods=['POST', 'GET'])
+def admin_destroy():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/update', methods=['POST', 'GET'])
+def admin_update():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/all', methods=['POST', 'GET'])
+def admin_all():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/count', methods=['POST', 'GET'])
+def admin_count():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/append', methods=['POST', 'GET'])
+def admin_append():
+    if request.method == 'POST':
+        class_name = request.form.get('class_name')
+        attributes = request.form.get('attributes')
+        console = ConsoleCommand()
+        console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', message="Instance created successfully")
+    return render_template('create.html')
+
+@app.route('/admin/help', methods=['POST', 'GET'])
+def admin_help():
+    if request.method == 'POST':
+        classes = {
+            'Player': ['first_name', 'last_name', 'gender', 'birth_day', 'weight', 'height', 'address', 'phone_number'],
+            'Tournament': ['name', 'date', 'age_range', 'description', 'win_value'],
+            'Sport': ['name']
+            }
+        # class_name = request.form.get('class_name')
+        # attributes = request.form.get('attributes')
+        # console = ConsoleCommand()
+        # console.do_create(f"{class_name} {attributes}")
+        return render_template('create.html', classes=classes)
+    return render_template('create.html')
 
 @app.route('/tournaments', strict_slashes=False)
 def tournaments():

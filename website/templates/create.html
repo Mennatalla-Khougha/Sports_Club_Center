@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block links %}
+<!-- <link rel="stylesheet" href="../static/styles/info.css" /> -->
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Create page</h1>
+    <form method="post">
+        <select id="class-selector">
+            {% for class in classes.keys() %}
+            <option value="{{ class }}" class="classes">{{ class }}</option>
+            {% endfor %}
+        </select>
+        
+        <div id="form-fields"></div>
+        
+        <input type="submit" value="Create">
+    </form>
+</div>
+<script>
+    let classFields = {{ classes|tojson }};
+</script>
+<script src="../static/scripts/create.js" defer></script>
+{% endblock %}

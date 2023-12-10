@@ -6,6 +6,12 @@
 
 {% block content %}
 <div class="container">
-<h1>Profile Page for {{ current_user.email }}</h1>
+<h1>Profile Page for {{ current_user.username }}</h1>
+<h2>Choose what you want to work on:</h2>
+<ul>
+{% for command in console_commands %}
+    <li><a href="{{ url_for('admin_' + command) }}">{{ command }}</a></li>
+{% endfor %}
+</ul>
 </div>
 {% endblock %}
