@@ -1,6 +1,5 @@
 .sports_filters {
   flex: 1;
-  /* min-width: 350px; */
   max-width: 100%;
   display: flex;
   justify-content: center;

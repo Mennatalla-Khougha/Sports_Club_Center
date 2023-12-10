@@ -27,14 +27,14 @@ dateEl.innerText = `today: ${myDate.toDateString()}`;
 
 function countTournaments(day, tournaments) {
   let formattedDay = `${myDate.getFullYear()}-`;
-  if (monthInx + 1 < 10){
+  if (monthInx + 1 < 10) {
     formattedDay += "0";
   }
-  formattedDay += `${monthInx + 1}-`
-  if (day < 10){
+  formattedDay += `${monthInx + 1}-`;
+  if (day < 10) {
     formattedDay += "0";
   }
-  formattedDay += `${day}`
+  formattedDay += `${day}`;
   return tournaments.filter((tournament) =>
     tournament.date.startsWith(formattedDay)
   );
@@ -128,7 +128,7 @@ fetch(api)
     if (!urlParams.has("id")) {
       if (urlParams.has("type")) {
         selectEl.selectedIndex = urlParams.get("type");
-        const changeEvent = new Event('change');
+        const changeEvent = new Event("change");
         selectEl.dispatchEvent(changeEvent);
       } else {
         updateCalender(tournamentsList["All"]);

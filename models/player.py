@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """Script for the Player model"""
-import models
 from models.BaseModel import BaseModel, Base
 from models.association import players_tournaments
-import sqlalchemy
 from sqlalchemy import Column, String, CHAR, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime

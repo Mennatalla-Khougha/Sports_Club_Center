@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Script creating the BaseModel Class"""
-import sqlalchemy
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 import models
 from datetime import datetime

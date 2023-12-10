@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Script for the Tournament model"""
-import models
 from models.BaseModel import BaseModel, Base
-import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from models.association import players_tournaments
