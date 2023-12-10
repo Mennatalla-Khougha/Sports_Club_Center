@@ -18,6 +18,7 @@ classes = ["BaseModel", "Player", "Tournament", "Sport", "Record"]
 
 
 def error(args):
+    """check if the command is wrong"""
     if not args:
         print("** class name missing **")
         return True
@@ -93,15 +94,16 @@ class ConsoleCommand(cmd.Cmd):
             print("** some attrebute(s) are missing or invalid **")
             storage.rollback()
             return
-        if isinstance(obj, Player) or  isinstance(obj, Tournament):
+        if isinstance(obj, Player) or isinstance(obj, Tournament):
             photo = input("Enter the path of the photo or (n) for no photo: ")
             if photo != "n":
                 try:
                     img = Image.open(photo)
+                    new_path = "website/static/images/"
                     if isinstance(obj, Player):
-                        new_path = f"website/static/personal_images/{obj.id}.png"
+                        new_path += f"personal/{obj.id}.png"
                     else:
-                        new_path = f"website/static/tournaments_images/{obj.id}.png"
+                        new_path += f"tournaments/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
@@ -176,10 +178,11 @@ class ConsoleCommand(cmd.Cmd):
             if key == "photo" and args[0] in ("Player", "Tournament"):
                 try:
                     img = Image.open(value)
+                    new_path = "website/static/images/"
                     if args[0] == "Player":
-                        new_path = f"website/static/personal_images/{obj.id}.png"
+                        new_path = f"personal/{obj.id}.png"
                     else:
-                        new_path = f"website/static/tournaments_images/{obj.id}.png"
+                        new_path = f"tournaments/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
