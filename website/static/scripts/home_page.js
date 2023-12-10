@@ -22,13 +22,13 @@ fetch(api)
     }
     console.log(event);
     let text = `<h2 class="name">${event.name}</h2>`;
-    let row = `<div class="row">`
-    row += `<img src="../static/tournaments_images/${event.id}.png" onerror="this.onerror=null; this.src='../static/tournaments_images/${event.sport}.png'" alt="${event.name}" />`;
+    let row = `<div class="row">`;
+    row += `<img src="../static/images/tournaments/${event.id}.png" onerror="this.onerror=null; this.src='../static/images/tournaments/${event.sport}.png'" alt="${event.name}" />`;
     row += `<div class="text">`;
     if (event.description) row += `<p>${event.description}</p>`;
     row += `</div>`;
     row += `</div>`;
-    text += row
+    text += row;
 
     eventEl.innerHTML = text;
   })

@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 """Script for the Record model"""
-import models
 from models.BaseModel import BaseModel, Base
-import sqlalchemy
 from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
 
 
 class Record(BaseModel, Base):

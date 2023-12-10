@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from sqlalchemy import Table, Column, ForeignKey, String
-from sqlalchemy.orm import relationship
 from models.BaseModel import Base
 
 

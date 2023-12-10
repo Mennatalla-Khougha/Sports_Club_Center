@@ -180,9 +180,9 @@ class ConsoleCommand(cmd.Cmd):
                     img = Image.open(value)
                     new_path = "website/static/images/"
                     if args[0] == "Player":
-                        new_path = f"personal/{obj.id}.png"
+                        new_path += f"personal/{obj.id}.png"
                     else:
-                        new_path = f"tournaments/{obj.id}.png"
+                        new_path += f"tournaments/{obj.id}.png"
                     img.save(new_path, format='PNG', compress_level=0)
                 except IOError as e:
                     print(e)
@@ -197,7 +197,6 @@ class ConsoleCommand(cmd.Cmd):
             "count": self.do_count,
             "show": self.do_show,
             "destroy": self.do_destroy,
-            "update": self.do_update,
         }
         args = re.split(r'(?<!\d)\.(?!\d)', arg)
         if len(args) != 2:
@@ -234,7 +233,6 @@ class ConsoleCommand(cmd.Cmd):
                 input_str = input_str.replace("'", '"')
                 myargs = json.loads(input_str)
                 for key, value in myargs.items():
-                    # if type(value) == str and ' ' in value:
                     if isinstance(value, str) and ' ' in value:
                         value = f'"{value}"'
                     methods[command[0]](f"{para} {key} {value}")
