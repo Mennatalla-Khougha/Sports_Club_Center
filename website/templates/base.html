@@ -4,53 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Champion Sports Club</title>
-    <link rel="stylesheet" href="../static/styles/common.css" />
-    <link rel="stylesheet" href="../static/styles/header.css" />
-    <link rel="stylesheet" href="../static/styles/footer.css" />
-    <link rel="stylesheet" href="../static/styles/filters.css" />
+    <link rel="stylesheet" href="/static/styles/common.css" />
+    <link rel="stylesheet" href="/static/styles/header.css" />
+    <link rel="stylesheet" href="/static/styles/footer.css" />
+    <link rel="stylesheet" href="/static/styles/filters.css" />
     {% block links %}
       {# more links #}
     {% endblock %}
-    <script src="../static/scripts/header.js" defer></script>
-    <link rel="icon" href="../static/images/ic_on.png" />
+    <script src="/static/scripts/header.js" defer></script>
+    <link rel="icon" href="/static/images/ic_on.png" />
   </head>
   <body>
     <header>
       <section class="options">
         <div class="players">
-          <a href="/players">
+          <a href="/club/players">
             <h3>Players</h3>
           </a>
         </div>
         <div class="sports">
-          <a href="/sports">
+          <a href="/club/sports">
             <h3>Sports</h3>
           </a>
           <ul class="popover">
-            <a href="/sports/karate">
+            <a href="/club/sports/karate">
               <li>karate</li>
             </a>
-            <a href="/sports/squash">
+            <a href="/club/sports/squash">
               <li>Squash</li>
             </a>
-            <a href="/sports/track_field">
+            <a href="/club/sports/track_field">
               <li>Track & Field</li>
             </a>
           </ul>
         </div>
         <div class="schedules">
-          <a href="/schedules">
+          <a href="/club/schedules">
             <h3>Schedules</h3>
           </a>
         </div>
         <div class="tournaments">
-          <a href="/tournaments">
+          <a href="/club/tournaments">
             <h3>Tournaments</h3>
           </a>
         </div>
       </section>
-      <a href="/">
-        <img src="../static/images/logo.png" alt="club logo" />
+      <a href="/club/">
+        <img src="/static/images/logo.png" alt="club logo" />
       </a>
       <h1>Champions Sports Club</h1>
       <div class="hamburger-menu">
@@ -62,6 +62,9 @@
     {% block content %}
       {# the page content #}
     {% endblock %}
-    <footer>Sports Club Center &copy; 2023</footer>
+    <footer>
+      <p>Sports Club Center &copy; 2023</p>
+      <p>contact us: admin@admin.com</p>
+    </footer>
   </body>
 </html>

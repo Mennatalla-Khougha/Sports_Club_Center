@@ -1,6 +1,6 @@
 const tournamentEl = document.querySelector(".grid-container");
 const selectEl = document.getElementById("sport");
-const api = `http://${window.location.hostname}:5000/api/v1/tournaments/`;
+const api = `http://${window.location.hostname}:5011/api/v1/tournaments/`;
 let tournamentsHTML = {};
 
 tournamentsHTML["All"] = "";
@@ -15,10 +15,10 @@ fetch(api)
   .then((data) => {
     for (const tournament of data) {
       let text = `<div class="grid_item">`;
-      text += `<a href="/tournaments/${tournament.id}"><h2>${tournament.name}</h2></a>`;
+      text += `<a href="/club/tournaments/${tournament.id}"><h2>${tournament.name}</h2></a>`;
       text += `<p>A ${tournament.sport} tournament, for age range: ${tournament.age_range}<br>`;
       text += `Date: ${tournament.date}</p>`;
-      text += `<img src="../static/images/tournaments/${tournament.id}.png" onerror="this.onerror=null; this.src='../static/images/tournaments/${tournament.sport}.png'" alt="${tournament.sport} Tournament" />`;
+      text += `<img src="/static/images/tournaments/${tournament.id}.png" onerror="this.onerror=null; this.src='/static/images/tournaments/${tournament.sport}.png'" alt="${tournament.sport} Tournament" />`;
       text += `</div>`;
       tournamentsHTML["All"] += text;
       if (tournamentsHTML[tournament.sport_id] !== undefined) {

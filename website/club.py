@@ -17,12 +17,12 @@ def close_db(error):
     """ Remove the current SQLAlchemy Session """
     storage.close()
 
-@app.route('/', strict_slashes=False)
+@app.route('/club/', strict_slashes=False)
 def home_page():
     """ routes the home page """
     return render_template('index.html')
 
-@app.route('/players', strict_slashes=False)
+@app.route('/club/players', strict_slashes=False)
 def players():
     """ routes the players page """
     sports = storage.all(Sport).values()
@@ -30,7 +30,7 @@ def players():
 
     return render_template('players.html', sports=sports)
 
-@app.route('/players/<player_id>', strict_slashes=False)
+@app.route('/club/players/<player_id>', strict_slashes=False)
 def player_page(player_id):
     """ routes the player_page page """
     player = storage.get(Player, player_id)
@@ -46,35 +46,35 @@ def player_page(player_id):
                            age=age)
 
 
-@app.route('/sports', strict_slashes=False)
+@app.route('/club/sports', strict_slashes=False)
 def sports():
     """ routes the sports page """
     return render_template('sports.html')
 
 
-@app.route('/sports/karate', strict_slashes=False)
+@app.route('/club/sports/karate', strict_slashes=False)
 def karate():
     """ routes the karate page """
     return render_template('karate.html')
 
 
-@app.route('/sports/squash', strict_slashes=False)
+@app.route('/club/sports/squash', strict_slashes=False)
 def squash():
     """ routes the squash page """
     return render_template('squash.html')
 
-@app.route('/sports/track_field', strict_slashes=False)
+@app.route('/club/sports/track_field', strict_slashes=False)
 def track_field():
     """ routes the track_field page """
     return render_template('track_field.html')
 
-@app.route('/schedules', strict_slashes=False)
+@app.route('/club/schedules', strict_slashes=False)
 def schedules():
     """ routes the schedules page """
     return render_template('schedules.html')
 
 
-@app.route('/tournaments', strict_slashes=False)
+@app.route('/club/tournaments', strict_slashes=False)
 def tournaments():
     """ routes the tournaments page """
     sports = storage.all(Sport).values()
@@ -82,7 +82,7 @@ def tournaments():
     return render_template('tournaments.html', sports=sports)
 
 
-@app.route('/tournaments/<tournament_id>', strict_slashes=False)
+@app.route('/club/tournaments/<tournament_id>', strict_slashes=False)
 def tournament_page(tournament_id):
     """ routes the tournament_page page """
     tournament = storage.get(Tournament, tournament_id)

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block links %}
-<link rel="stylesheet" href="../static/styles/tournament_page.css" />
+<link rel="stylesheet" href="/static/styles/tournament_page.css" />
 {% endblock %}
 
 {% block content %}
@@ -9,8 +9,8 @@
   <h2>{{ tournament.name }}</h2>
   <div class="image_info">
     <img
-      src="../static/tournaments_images/{{ tournament.id }}.png"
-      onerror="this.onerror=null; this.src='../static/images/tournaments/{{ tournament.sport.name }}.png'"
+      src="/static/tournaments_images/{{ tournament.id }}.png"
+      onerror="this.onerror=null; this.src='/static/images/tournaments/{{ tournament.sport.name }}.png'"
       alt="{{ tournament.sport.name }} Tournament"
     />
     <div class="info">
