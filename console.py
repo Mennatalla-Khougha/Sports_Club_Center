@@ -3,11 +3,8 @@
 import cmd
 import re
 import json
-from models.BaseModel import BaseModel
 from models.player import Player
 from models.tournament import Tournament
-from models.sport import Sport
-from models.record import Record
 from models import storage
 import shlex
 import sqlalchemy

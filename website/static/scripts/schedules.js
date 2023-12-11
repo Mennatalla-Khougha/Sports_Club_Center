@@ -5,8 +5,8 @@ const selectEl = document.getElementById("sport");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const urlParams = new URLSearchParams(window.location.search);
-const api = `http://${window.location.hostname}:5000/api/v1/tournaments/`;
-let paramsApi = `http://${window.location.hostname}:5000/api/v1/players/`;
+const api = `http://${window.location.hostname}:5011/api/v1/tournaments/`;
+let paramsApi = `http://${window.location.hostname}:5011/api/v1/players/`;
 
 let myDate = new Date();
 let monthInx = myDate.getMonth();

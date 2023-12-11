@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block links %}
-<link rel="stylesheet" href="../static/styles/player_page.css" />
+<link rel="stylesheet" href="/static/styles/player_page.css" />
 {% endblock %}
 
 {% block content %}
 <div class="container">
   <div class="image_stats">
     <img
-      src="../static/images/personal/{{ player.id }}.png"
-      onerror="this.onerror=null; this.src='../static/images/personal/no_pic.png'"
+      src="/static/images/personal/{{ player.id }}.png"
+      onerror="this.onerror=null; this.src='/static/images/personal/no_pic.png'"
       alt="{{ player.sport.name }} Players"
     />
     <div class="stats">
@@ -51,7 +51,7 @@
       <li>Weight: {{ player.weight }}</li>
       <li>Height: {{ player.height }}</li>
     </ul>
-    <a href="/schedules?id={{ player.id }}"><button>schedules</button></a>
+    <a href="/club/schedules?id={{ player.id }}"><button>schedules</button></a>
   </div>
 </div>
 {% endblock %}
