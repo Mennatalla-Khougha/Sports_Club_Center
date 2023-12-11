@@ -1,6 +1,6 @@
 const playerEl = document.querySelector(".grid-container");
 const selectEl = document.getElementById("sport");
-const api = `http://${window.location.hostname}:5011/api/v1/players/`;
+const api = `http://${window.location.hostname}:5011/club_api/v1/players/`;
 let playersHTML = {};
 
 playersHTML["All"] = "";
@@ -17,7 +17,7 @@ fetch(api)
       let text = `<div class="grid_item">`;
       text += `<a href="/club/players/${player.id}"><h2>${player.first_name} ${player.last_name}</h2></a>`;
       text += `<p>${player.age} years old ${player.sport} player, participated in ${player.played_tournaments} tournaments.</p>`;
-      text += `<img src="/static/images/personal/${player.id}.png" onerror="this.onerror=null; this.src='/static/images/personal/no_pic.png'" alt="${player.sport} player" />`;
+      text += `<img src="/static/club/images/personal/${player.id}.png" onerror="this.onerror=null; this.src='/static/club/images/personal/no_pic.png'" alt="${player.sport} player" />`;
       text += `</div>`;
       playersHTML["All"] += text;
       if (playersHTML[player.sport_id] !== undefined) {

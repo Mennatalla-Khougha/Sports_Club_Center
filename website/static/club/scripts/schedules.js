@@ -5,8 +5,8 @@ const selectEl = document.getElementById("sport");
 const prevButton = document.getElementById("prev");
 const nextButton = document.getElementById("next");
 const urlParams = new URLSearchParams(window.location.search);
-const api = `http://${window.location.hostname}:5011/api/v1/tournaments/`;
-let paramsApi = `http://${window.location.hostname}:5011/api/v1/players/`;
+const api = `http://${window.location.hostname}:5011/club_api/v1/tournaments/`;
+let paramsApi = `http://${window.location.hostname}:5011/club_api/v1/players/`;
 
 let myDate = new Date();
 let monthInx = myDate.getMonth();
@@ -57,8 +57,6 @@ function updateCalender(dates) {
     "November",
     "December",
   ];
-  console.log(firstDay);
-  console.log(month[monthEl]);
 
   monthEl.innerText = `${month[monthInx]} ${myDate.getFullYear()}`;
 
@@ -89,7 +87,6 @@ function updateCalender(dates) {
 }
 
 if (urlParams.has("id")) {
-  console.log(urlParams.get("id"));
   paramsApi += `${urlParams.get("id")}/tournaments`;
   fetch(paramsApi)
     .then((response) => {
@@ -99,10 +96,9 @@ if (urlParams.has("id")) {
       return response.json();
     })
     .then((data) => {
-      selected = urlParams.get("type");
+      selected = urlParams.get("id");
       tournamentsList[selected] = data;
       updateCalender(data);
-      console.log(data);
     })
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
