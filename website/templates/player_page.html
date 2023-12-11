@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block links %}
-<link rel="stylesheet" href="/static/styles/player_page.css" />
+<link rel="stylesheet" href="/static/club/styles/player_page.css" />
 {% endblock %}
 
 {% block content %}
 <div class="container">
   <div class="image_stats">
     <img
-      src="/static/images/personal/{{ player.id }}.png"
-      onerror="this.onerror=null; this.src='/static/images/personal/no_pic.png'"
+      src="/static/club/images/personal/{{ player.id }}.png"
+      onerror="this.onerror=null; this.src='/static/club/images/personal/no_pic.png'"
       alt="{{ player.sport.name }} Players"
     />
     <div class="stats">

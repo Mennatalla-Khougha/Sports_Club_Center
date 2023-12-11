@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """players routes"""
-from api.v1.views import app_views
+from club_api.v1.views import app_views
 from flask import Flask, abort, jsonify, request
 from models import storage
 from models.player import Player

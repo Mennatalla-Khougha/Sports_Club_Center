@@ -1,5 +1,5 @@
 const eventEl = document.querySelector(".info.event");
-const api = `http://${window.location.hostname}:5011/api/v1/tournaments/`;
+const api = `http://${window.location.hostname}:5011/club_api/v1/tournaments/`;
 
 fetch(api)
   .then((response) => {
@@ -23,7 +23,7 @@ fetch(api)
     console.log(event);
     let text = `<h2 class="name">${event.name}</h2>`;
     let row = `<div class="row">`;
-    row += `<img src="/static/images/tournaments/${event.id}.png" onerror="this.onerror=null; this.src='/static/images/tournaments/${event.sport}.png'" alt="${event.name}" />`;
+    row += `<img src="/static/club/images/tournaments/${event.id}.png" onerror="this.onerror=null; this.src='/static/club/images/tournaments/${event.sport}.png'" alt="${event.name}" />`;
     row += `<div class="text">`;
     if (event.description) row += `<p>${event.description}</p>`;
     row += `</div>`;
