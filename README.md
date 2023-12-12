@@ -4,7 +4,11 @@
 
 ### The project 
 
-Sports Club Center is a site for managing a club and also for fans to have easy access to information about the club, players and schedules. 
+Sports Club Center is a site for managing a club and also for fans to have easy access to information about the club, players, and schedules. 
+
+### Deployed SCC
+
+[SCC](http://george-devs.tech/club)
 
 ## Team
 
