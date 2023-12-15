@@ -96,7 +96,7 @@ class ConsoleCommand(cmd.Cmd):
             if photo != "n":
                 try:
                     img = Image.open(photo)
-                    new_path = "website/static/images/"
+                    new_path = "website/static/club/images/"
                     if isinstance(obj, Player):
                         new_path += f"personal/{obj.id}.png"
                     else:
@@ -175,7 +175,7 @@ class ConsoleCommand(cmd.Cmd):
             if key == "photo" and args[0] in ("Player", "Tournament"):
                 try:
                     img = Image.open(value)
-                    new_path = "website/static/images/"
+                    new_path = "website/static/club/images/"
                     if args[0] == "Player":
                         new_path += f"personal/{obj.id}.png"
                     else:
